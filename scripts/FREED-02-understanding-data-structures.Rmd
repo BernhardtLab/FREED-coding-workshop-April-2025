@@ -242,7 +242,10 @@ data investigation tools we have gone over so far.
 Create a new script in RStudio and copy and paste the following code. Then
 move on to the tasks below, which help you to fill in the gaps (\_\_\_\_\_\_).
 
+# JASON: I closed your ``` & your challenge chunk below 
 ```
+```
+
 Using the object `gapminder`:
 
 # 1. Print the data
@@ -266,6 +269,9 @@ Print the data to the
 console
 
 :::::::::::::::  solution
+:::::::::::::::
+:::::::::::::::::::::::::::::::::::::::
+
 
 ### Tip 1.1
 
@@ -281,7 +287,7 @@ gapminder
 print(gapminder)
 ```
 
-:::::::::::::::::::::::::
+
 
 #### 2\. Overview of the data types
 
@@ -358,6 +364,7 @@ We need to use our countries listed as a factor level for this to work.
 
 THIS ISNT WORKING IN THE CHUNK, BUT IS IN THE CONSOLE????
 
+
 ```{r, include=FALSE}
 levels(gapminder$country.fac)
 ```
@@ -390,7 +397,6 @@ gapminder[gapminder$country.fac=="Panama",]
 ```
 
 Finally, we can register this subsetted data frame as its own entry if desired.
-
 ```{r, include=FALSE}
 gapminder.panama <- gapminder[gapminder$country.fac=="Panama",]
 
