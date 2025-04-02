@@ -1,5 +1,5 @@
 ---
-title: "FREED-01-Setting-up-your-system-draft"
+title: "FREED-01-Getting-Started-draft"
 output:
   html_document:
     css: styles.css
@@ -26,9 +26,6 @@ output:
 - How to install packages?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
-
-```{r, include=FALSE}
-```
 
 ## R and R Studio: Basic Layout
 Prior to the workshop, you should have downloaded the latest version of R and R Studio. If you faced any installation issues, please let one of us know so we can resolve them before we begin. 
@@ -69,33 +66,11 @@ There are two main ways one can work within RStudio:
 #### R scripts
 
 Any commands that you write in the R console can be saved to a file
-to be re-run again.  Files containing R code to be ran in this way are
+to be run again.  Files containing R code to be ran in this way are
 called R scripts.  R scripts have `.R` at the end of their names to
 let you know what they are.
 
-:::::::::::::::::::::::::::::::::::::::::  tip
-
-#### Tip: Running segments of your code
- 
-RStudio offers you great flexibility in running code from within the editor
-window. There are buttons, menu choices, and keyboard shortcuts. To run the
-current line, you can
-
-1. click on the `Run` button above the editor panel, or
-2. select "Run Lines" from the "Code" menu, or
-3. hit <kbd>Ctrl</kbd>\+<kbd>Return</kbd> in Windows or Linux
-  or <kbd>⌘</kbd>\+<kbd>Return</kbd> on OS X.
-  (This shortcut can also be seen by hovering
-  the mouse over the button). To run a block of code, select it and then `Run`.
-  If you have modified a line of code within a block of code you have just run,
-  there is no need to reselect the section and `Run`, you can use the next button
-  along, `Re-run the previous region`. This will run the previous code block
-  including the modifications you have made.
-  
-:::::::::::::::::::::::::::::::::::::::::
-
-
-## Introduction to R
+#### R Console
 
 Much of your time in R will be spent in the R interactive
 console. This is where you will run all of your code, and can be a
@@ -105,7 +80,11 @@ The first thing you will see in the R interactive session is a bunch
 of information, followed by a ">" and a blinking cursor. You type in commands, R tries to execute them, and then
 returns a result.
 
-## Using R as a calculator
+Let's go through some basic functions that we can perform in R. 
+
+## Basic R Commands
+
+### Using R as a Calculator
 
 The simplest thing you could do with R is to do arithmetic:
 
@@ -114,8 +93,7 @@ The simplest thing you could do with R is to do arithmetic:
 ```
 
 And R will print out the answer, with a preceding "[1]". [1] is the index of
-the first element of the line being printed in the console. For more information
-on indexing vectors, see [Episode 6: Subsetting Data](https://swcarpentry.github.io/r-novice-gapminder/06-data-subsetting/index.html).
+the first element of the line being printed in the console. 
 
 If you type in an incomplete command, R will wait for you to
 complete it. If you are familiar with Unix Shell's bash, you may recognize this behavior from bash.
@@ -132,20 +110,6 @@ Any time you hit return and the R session shows a "+" instead of a ">", it
 means it's waiting for you to complete the command. If you want to cancel
 a command you can hit <kbd>Esc</kbd> and RStudio will give you back the ">" prompt.
 
-:::::::::::::::::::::::::::::::::::::::::  tip
-
-#### Tip: Canceling commands
-
-If you're using R from the command line instead of from within RStudio,
-you need to use <kbd>Ctrl</kbd>\+<kbd>C</kbd> instead of <kbd>Esc</kbd>
-to cancel the command. This applies to Mac users as well!
-
-Canceling a command isn't only useful for killing incomplete commands:
-you can also use it to tell R to stop running code (for example if it's
-taking much longer than you expect), or to get rid of the code you're
-currently writing.
-
-:::::::::::::::::::::::::::::::::::::::::
 
 When using R as a calculator, the order of operations is the same as you
 would have learned back in school.
@@ -165,24 +129,12 @@ From highest to lowest precedence:
 
 Use parentheses to group operations in order to force the order of
 evaluation if it differs from the default, or to make clear what you
-intend.
+intend.This can get unwieldy when not needed, but clarifies your intentions.
+
 
 ```{r}
 (3 + 5) * 2
 ```
-
-This can get unwieldy when not needed, but clarifies your intentions.
-Remember that others may later read your code.
-
-```{r, eval=FALSE}
-(3 + (5 * (2 ^ 2))) # hard to read
-3 + 5 * 2 ^ 2       # clear, if you remember the rules
-3 + 5 * (2 ^ 2)     # if you forget some rules, this might help
-```
-
-The text after each line of code is called a
-"comment". Anything that follows after the hash (or octothorpe) symbol
-`#` is ignored by R when it executes code.
 
 Really small or large numbers get a scientific notation:
 
@@ -196,55 +148,93 @@ is shorthand for `2 * 10^(-4)`.
 You can write numbers in scientific notation too:
 
 ```{r}
-5e3  # Note the lack of minus here
+5e3  
 ```
 
-## Mathematical functions
+
+:::::::::::::::::::::::::::::::::::::::::  challenge
+
+#### Challenge: Perform Calculations in an R Script
+As mentioned above, it can be useful to save code in an R script (.R file) to revisit later. Try opening a new R document and writing a command that adds 45 to  621, then subtracts 54. Run the code from the script (see Tip below) and let us know when you have the answer! 
+:::::::::::::::::::::::::::::::::::::::::
+
+:::::::::::::::::::::::::::::::::::::::::  tip
+
+#### Tip: Running segments of your code in an R script
+ 
+RStudio offers you great flexibility in running code from within the editor
+window. There are buttons, menu choices, and keyboard shortcuts. To run the
+current line, you can
+
+1. click on the `Run` button above the editor panel, or
+2. select "Run Lines" from the "Code" menu, or
+3. hit <kbd>Ctrl</kbd>\+<kbd>Return</kbd> in Windows or Linux
+  or <kbd>⌘</kbd>\+<kbd>Return</kbd> on OS X.
+  (This shortcut can also be seen by hovering
+  the mouse over the button). To run a block of code, select it and then `Run`.
+  If you have modified a line of code within a block of code you have just run,
+  there is no need to reselect the section and `Run`, you can use the next button
+  along, `Re-run the previous region`. This will run the previous code block
+  including the modifications you have made.
+  
+:::::::::::::::::::::::::::::::::::::::::
+
+
+:::::::::::::::::::::::::::::::::::::::::  solution
+#### Solution
+1. Create a new file 
+File > New file > R script 
+
+2. Type out the code 
+```{r, eval=F}
+(45 + 621) - 54
+```
+
+3. Highlight the code you want to run and press Return/Enter
+```{r, echo=F }
+(45 + 621) - 54
+```
+:::::::::::::::::::::::::::::::::::::::::
 
 R has many built in mathematical functions. To call a function,
 we can type its name, followed by open and closing parentheses.
-Functions take arguments as inputs, anything we type inside the parentheses of a function is considered an argument. Depending on the function, the number of arguments can vary from none to multiple. For example:
+Functions take arguments as inputs, anything we type inside the parentheses of a function is considered an argument. 
+
+trigonometry function
+```{r}
+sin(1)  
+```
+base 10 logarithm
+```{r}
+log10(10)  
+```
+
+Natural logarithm
+```{r}
+log(1)  
+```
+
+e^(1/2)
+```{r}
+exp(0.5) 
+```
+
+:::::::::::::::::::::::::::::::::::::::::  tip
+#### Annotating your code
+
+Your code may be referenced in the future by others or even yourself. To make it easier to understand, it can be useful to annotate/ leave comments explaining what you are doing. 
+This can be done in your R script using #
+The text after each line of code is called a "comment". Anything that follows after the hash (or octothorpe) symbol
+`#` is ignored by R when it executes code.
+
+Copy the code below and see for yourself! 
 
 ```{r, eval=FALSE}
-getwd() #returns an absolute filepath
+54 ^ 12 #raise 54 to the power of 12 
+# 44 * 12
 ```
-
-doesn't require an argument, whereas for the next set of mathematical functions we will need to supply the function a value in order to compute the result.
-
-```{r}
-sin(1)  # trigonometry functions
-```
-
-```{r}
-log(1)  # natural logarithm
-```
-
-```{r}
-log10(10) # base-10 logarithm
-```
-
-```{r}
-exp(0.5) # e^(1/2)
-```
-
-Don't worry about trying to remember every function in R. You
-can look them up on Google, or if you can remember the
-start of the function's name, use the tab completion in RStudio.
-
-This is one advantage that RStudio has over R on its own, it
-has auto-completion abilities that allow you to more easily
-look up functions, their arguments, and the values that they
-take.
-
-Typing a `?` before the name of a command will open the help page
-for that command. When using RStudio, this will open the 'Help' pane;
-if using R in the terminal, the help page will open in your browser.
-The help page will include a detailed description of the command and
-how it works. Scrolling to the bottom of the help page will usually
-show a collection of code examples which illustrate command usage.
-We'll go through an example later.
-
-## Comparing things
+:::::::::::::::::::::::::::::::::::::::::  
+### Comparing things
 
 We can also do comparisons in R:
 
@@ -288,11 +278,8 @@ different underlying representations and therefore be
 different by a small margin of error (called Machine
 numeric tolerance).
 
-Instead you should use the `all.equal` function.
-
-Further reading: [http://floating-point-gui.de/](https://floating-point-gui.de/)
-
 :::::::::::::::::::::::::::::::::::::::::
+
 
 ## Variables and assignment
 
@@ -378,7 +365,7 @@ celsius2kelvin
 
 :::::::::::::::  solution
 
-#### Solution to challenge 1
+##### Solution to challenge 1
 
 The following can be used as R variables:
 
@@ -455,28 +442,7 @@ rm(temp.env)
 
 :::::::::::::::::::::::::::::::::::::::::  tip
 
-#### Tip: hidden objects
 
-Like in the shell, `ls` will hide any variables or functions starting
-with a "." by default. To list all objects, type `ls(all.names=TRUE)`
-instead
-
-:::::::::::::::::::::::::::::::::::::::::
-
-Note here that we didn't give any arguments to `ls`, but we still
-needed to give the parentheses to tell R to call the function.
-
-If we type `ls` by itself, R prints a bunch of code instead of a listing of objects.
-
-```{r}
-ls
-```
-
-What's going on here?
-
-Like everything in R, `ls` is the name of an object, and entering the name of
-an object by itself prints the contents of the object. The object `x` that we
-created earlier contains `r x`:
 
 ```{r}
 x
@@ -525,6 +491,16 @@ how to fix a problem.
 
 :::::::::::::::::::::::::::::::::::::::::
 
+
+:::::::::::::::::::::::::::::::::::::::::  tip
+
+#### Tip: Canceling commands
+Canceling a command isn't only useful for killing incomplete commands:
+you can also use it to tell R to stop running code (for example if it's
+taking much longer than you expect), or to get rid of the code you're
+currently writing.
+
+:::::::::::::::::::::::::::::::::::::::::
 ## R Packages
 
 It is possible to add functions to R by writing a package, or by
@@ -689,3 +665,41 @@ install.packages("ggplot2", dependencies = TRUE)
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Don't worry about trying to remember every function in R. You
+can look them up on Google, or if you can remember the
+start of the function's name, use the tab completion in RStudio.
+
+This is one advantage that RStudio has over R on its own, it
+has auto-completion abilities that allow you to more easily
+look up functions, their arguments, and the values that they
+take.
+
+Typing a `?` before the name of a command will open the help page
+for that command. When using RStudio, this will open the 'Help' pane;
+if using R in the terminal, the help page will open in your browser.
+The help page will include a detailed description of the command and
+how it works. Scrolling to the bottom of the help page will usually
+show a collection of code examples which illustrate command usage.
+We'll go through an example later.
