@@ -40,19 +40,15 @@ Please ensure you have the latest version of R and RStudio installed on your mac
 
 ## Why use R and R studio?
 
-Welcome to the R portion of the Software Carpentry workshop!
+Welcome to the Set-Up portion of our FREED R Workshop. This module is modified from the Software Carpentry workshop, which you can learn more about online. 
 
-Science is a multi-step process: once you've designed an experiment and collected
-data, the real fun begins with analysis! Throughout this lesson, we're going to teach you some of the fundamentals of the R language as well as some best practices for organizing code for scientific projects that will make your life easier.
+Throughout this module, we're going to teach you some of the fundamentals of the R language as well as some best practices for organizing code for scientific projects.
 
 Although we could use a spreadsheet in Microsoft Excel or Google sheets to analyze our data, these tools are limited in their flexibility and accessibility. Critically, they also are difficult to share steps which explore and change the raw data, which is key to ["reproducible" research](https://journals.plos.org/ploscompbiol/article?id=10.1371/journal.pcbi.1003285). 
 
-Therefore, this lesson will teach you how to begin exploring your data using R and RStudio. The R program is available for Windows, Mac, and Linux operating systems, and is a freely-available where you downloaded it above. To run R, all you need is the R program. 
+Therefore, this workshop will teach you how to begin exploring your data using R and RStudio. The R program is available for Windows, Mac, and Linux operating systems, and is a freely-available where you downloaded it above. To run R, all you need is the R program. 
 
-However, to make using R easier, we will use the program RStudio, which we also downloaded above. RStudio is a free, open-source, Integrated Development
-Environment (IDE). It provides a built-in editor, works on all platforms (including
-on servers) and provides many advantages such as integration with version
-control and project management.
+However, to make using R easier, we will use the program RStudio, which we also downloaded above. RStudio is a free, open-source, Integrated Development Environment (IDE). It provides a built-in editor, works on all platforms (including on servers) and provides many advantages such as integration with version control and project management.
 
 ## Overview  
 
