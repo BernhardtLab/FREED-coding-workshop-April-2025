@@ -7,10 +7,10 @@ source: Rmd
 
 ::::::::::::::::::::::::::::::::::::::: objectives
 
-- To be able to identify the 5 main data types.
-- To begin exploring data frames, and understand how they are related to vectors and lists.
+- To begin exploring data frames, and be able to visualize them in Rstudio.
 - To be able to ask questions from R about the type, class, and structure of an object.
-- To understand the information of the attributes "names", "class", and "dim".
+- To understand how to add rows or columns to a data frame.
+- To understand how to subset parts of data frames.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -18,6 +18,130 @@ source: Rmd
 
 - How can I read data in R?
 - What are the basic data types in R?
-- How do I represent categorical information in R?
+- How can I manipulate a data frame?
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
+
+```{r, include=FALSE}
+options(stringsAsFactors = FALSE)
+cats_orig <- data.frame(coat = c("calico", "black", "tabby"), weight = c(2.1, 5, 3.2), likes_catnip = c(1, 0, 1), stringsAsFactors = FALSE)
+cats_bad <- data.frame(coat = c("calico", "black", "tabby", "tabby"), weight = c(2.1, 5, 3.2, "2.3 or 2.4"), likes_catnip = c(1, 0, 1, 1), stringsAsFactors = FALSE)
+cats <- cats_orig
+```
+
+One of R's most powerful features is its ability to deal with tabular data -
+such as you may already have in a spreadsheet or a CSV file. Let's start by
+making a toy dataset in your `data/` directory, called `feline-data.csv`:
+
+```{r}
+cats <- data.frame(coat = c("calico", "black", "tabby"),
+                    weight = c(2.1, 5.0, 3.2),
+                    likes_catnip = c(1, 0, 1))
+```
+
+Let's now view the cats dataframe. We can to this a number of different ways
+
+```{r}
+cats
+
+View(cats)
+```
+
+We can now ask R about the structure of our dataframe — variables (columns) may be numbers, characters, or factors
+
+```{r}
+str(cats)
+```
+
+Imagine we were interested in asking how whether or not cats like catnip affect other metrics like their weight.
+In this case, we would need to set "likes_catnip" to a factor level. These are categorical variables that only take on 
+finite, discrete values.
+
+Let's start by isolating the "likes_catnip" column visually using the $ function.
+
+```{r}
+cats$likes_catnip
+```
+
+Now, we can create a fourth column in the cats dataframe that contains this information as a factor, and view the structure of the
+dataset again.
+
+```{r}
+cats$factor_catnip <-as.factor(cats$likes_catnip)
+
+cats
+View(cats)
+str(cats)
+```
+
+Finally, let's add a fourth piece of information to our data frame as a fifth column.
+
+```{r}
+age <- c(2, 3, 5)
+cats
+```
+
+We can then add this as a column via:
+
+```{r}
+cbind(cats, age)
+```
+
+Note that if we tried to add a vector of ages with a different number of entries than the number of rows in the data frame, it would fail:
+
+```{r, error=TRUE}
+age <- c(2, 3, 5, 12)
+cbind(cats, age)
+
+age <- c(2, 3)
+cbind(cats, age)
+```
+
+Why didn't this work? Of course, R wants to see one element in our new column
+for every row in the table:
+
+```{r}
+nrow(cats)
+length(age)
+```
+
+So for it to work we need to have `nrow(cats)` = `length(age)`. Let's overwrite the content of cats with our new data frame.
+
+```{r}
+age <- c(2, 3, 5)
+cats <- cbind(cats, age)
+
+cats
+```
+
+Now how about adding rows? We already know that the rows of a
+data frame are lists:
+
+```{r}
+newRow <- list("tortoiseshell", 3.3, TRUE, 1, 9)
+cats <- rbind(cats, newRow)
+```
+
+Let's confirm that our new row was added correctly. 
+
+```{r}
+cats
+```
+
+We can now save `cats` as a CSV file. It is good practice to call the argument
+names explicitly so the function knows what default values you are changing. Here we
+are setting `row.names = FALSE`. Recall you can use `?write.csv` to pull
+up the help file to check out the argument names and their default values.
+
+##################################################################################################
+
+NOTE TO SELF : this is not presently working. I can get this to work for the github just fine, but will need to coordinate with Amanda on
+the file directory we are expecting students to set up
+
+##################################################################################################
+
+```{r}
+write.csv(cats, "data/feline-data.csv")
+```
+
+Okay, so 
