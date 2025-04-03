@@ -699,7 +699,7 @@ We'll go through an example later.
 
 
 
-#### Bonus
+#### Bonus Challenges (havent finished yet)
 
 
 :::::::::::::::::::::::::::::::::::::::  challenge
@@ -774,3 +774,5 @@ getwd() #
 ```
 
 :::::::::::::::::::::::::::::::::::::::::  
+
+add a pattern =? 
