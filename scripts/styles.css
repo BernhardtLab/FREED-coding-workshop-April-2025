@@ -60,7 +60,12 @@
 }
 
 /* When checkbox is checked, show the solution */
-#solution-toggle:checked + .toggle-label + .solution {
+#solution-toggle-1:checked + .toggle-label + #solution-content-1,
+#solution-toggle-2:checked + .toggle-label + #solution-content-2,
+#solution-toggle-3:checked + .toggle-label + #solution-content-3,
+#solution-toggle-4:checked + .toggle-label + #solution-content-4,
+#solution-toggle-5:checked + .toggle-label + #solution-content-5,
+#solution-toggle-6:checked + .toggle-label + #solution-content-6 {  
   display: block;
   border-left: 5px solid #31A354;
   padding: 10px 15px 10px 20px;

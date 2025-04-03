@@ -177,8 +177,11 @@ current line, you can
 :::::::::::::::::::::::::::::::::::::::::
 
 
-:::::::::::::::::::::::::::::::::::::::::  solution
-#### Solution
+<input type="checkbox" id="solution-toggle-1" style="display:none;" />
+<label for="solution-toggle-1" class="toggle-label">Click to show the solution</label>
+<div id="solution-content-1" class="solution">
+<h4>Solution:</h4>
+
 1. Create a new file 
 File > New file > R script 
 
@@ -191,7 +194,7 @@ File > New file > R script
 ```{r, echo=F }
 (45 + 621) - 54
 ```
-:::::::::::::::::::::::::::::::::::::::::
+</div>
 
 R has many built in mathematical functions. To call a function,
 we can type its name, followed by open and closing parentheses.
@@ -343,9 +346,10 @@ celsius2kelvin
 ```
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::  solution
-
-##### Solution 
+<input type="checkbox" id="solution-toggle-2" style="display:none;" />
+<label for="solution-toggle-2" class="toggle-label">Click to show the solution</label>
+<div id="solution-content-2" class="solution">
+<h4>Solution:</h4>
 
 The following can be used as R variables:
 
@@ -364,7 +368,7 @@ min-length
 2widths
 ```
 
-:::::::::::::::::::::::::
+</div>
 
 One final thing to be aware of is that R is *vectorized*, meaning that
 variables and functions can have vectors as values. In contrast to physics and
@@ -510,9 +514,9 @@ dir.create("data")
 :::::::::::::::::::::::::::::::::::::::  
 
 
-<input type="checkbox" id="solution-toggle" style="display:none;" />
-<label for="solution-toggle" class="toggle-label">Click to show the solution</label>
-<div id="solution-content" class="solution">
+<input type="checkbox" id="solution-toggle-3" style="display:none;" />
+<label for="solution-toggle-3" class="toggle-label">Click to show the solution</label>
+<div id="solution-content-3" class="solution">
 
 <h4>Solution:</h4>
 
@@ -569,15 +573,16 @@ We will load and inspect these data later.
 :::::::::::::::::::::::::::::::::::::::  
 
 
-:::::::::::::::::::::::::::::::::::::::  solution
-
-#### Solution 
+<input type="checkbox" id="solution-toggle-4" style="display:none;" />
+<label for="solution-toggle-4" class="toggle-label">Click to show the solution</label>
+<div id="solution-content-4" class="solution">
+<h4>Solution:</h4>
 
 ```{r, eval=F}
 list.files("data/")
 ```
-:::::::::::::::::::::::::::::::::::::::  
 
+</div>
 
 :::::::::::::::::::::::::::::::::::::::::  tip
 
@@ -633,9 +638,10 @@ Note: You may get a flag about needing to install dependencies. If you do, click
 :::::::::::::::::::::::::::::::::::::::  
 
 
-:::::::::::::::::::::::::::::::::::::::  solution
-
-#### Solution
+<input type="checkbox" id="solution-toggle-5" style="display:none;" />
+<label for="solution-toggle-5" class="toggle-label">Click to show the solution</label>
+<div id="solution-content-5" class="solution">
+<h4>Solution:</h4>
 
 We can use the `install.packages()` command to install the required packages.
 
@@ -650,7 +656,7 @@ An alternate solution, to install multiple packages with a single `install.packa
 install.packages(c("tidyverse", "gapminder"))
 ```
 
-:::::::::::::::::::::::::::::::::::::::  
+</div>
 
 
 
@@ -695,7 +701,7 @@ We'll go through an example later.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-#### Challenge 2
+#### Challenge
 
 What will be the value of each variable  after each
 statement in the following program?
@@ -705,14 +711,13 @@ mass <- 47.5
 age <- 122
 mass <- mass * 2.3
 age <- age - 20
-
-
-<blockquote class="twitter-tweet"><p lang="en" dir="ltr">Managing your projects in a reproducible fashion doesn&#39;t just make your science reproducible, it makes your life easier.</p>&mdash; Vince Buffalo (@vsbuffalo) <a href="https://twitter.com/vsbuffalo/status/323638476153167872?ref_src=twsrc%5Etfw">April 15, 2013</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 ```
+:::::::::::::::::::::::::::::::::::::::  
 
-:::::::::::::::  solution
-
-#### Solution to challenge 2
+<input type="checkbox" id="solution-toggle-6" style="display:none;" />
+<label for="solution-toggle-6" class="toggle-label">Click to show the solution</label>
+<div id="solution-content-6" class="solution">
+<h4>Solution:</h4>
 
 ```{r ch2pt1-sol}
 mass <- 47.5
@@ -740,48 +745,7 @@ age <- age - 20
 This will subtract 20 from the existing value of `r age + 20 ` to give a new value
 of `r age` to the variable age.
 
-
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-
-
-
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-#### Challenge 3
-
-Run the code from the previous challenge, and write a command to
-compare mass to age. Is mass larger than age?
-
-:::::::::::::::  solution
-
-#### Solution to challenge 3
-
-One way of answering this question in R is to use the `>` to set up the following:
-
-```{r ch3-sol}
-mass > age
-```
-
-This should yield a boolean value of TRUE since `r mass` is greater than `r age`.
-
-
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-
-
-
-
-
-
->> pattern 
+</div>
 
 
 
