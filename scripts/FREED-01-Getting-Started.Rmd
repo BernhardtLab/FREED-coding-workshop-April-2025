@@ -426,7 +426,6 @@ We're going to create a new project in RStudio:
 4. Type in the name of the directory to store your project. For today, we can use "FREED-coding-workshop-April-2025".
 5. Click the "Create Project" button.
 
-
 ::::::::::::::::::::::::::::::::::::::::::: tip
 #### Tip: Work from your local hard drive
 Save your project on the local system, meaning the hard drive of your computer (e.g., "C" Drive). Saving your projects to a cloud-based server (e.g., OneDrive, Google Drive, iCloud) can make it challenging to navigate across folders later on. 
@@ -450,6 +449,12 @@ interfering with each other.
 3. Double click on the `.Rproj` file in that directory.
 
 :::::::::::::::::::::::::::::::::::::::  
+
+Each time you create a new RStudio Project, it will create a new directory for that project. When you open an existing `.Rproj` file, it will open that project and set R's working directory to the folder that file is in.
+
+You can check the current working directory with the `getwd()` command, or by using the menus in RStudio.
+In the console, type `getwd()` ("wd" is short for "working directory") and hit Enter.
+
 
 ### Best practices for project organization
 
@@ -488,7 +493,29 @@ project, and some of the analyses get shared between projects.
    4. Put the output files in the output directory (e.g., processed data, figures).
    5. Name all files to reflect their content or function.
 
+
+Le's go ahead and organize our project directory. 
+To list the files in your current directory, use the `list.files()` command in your console. You should only have your .Rproj (R project) file. 
+
+To create a subdirectory for our `data`, we will use the `dir.create()` command.
+
+```{r, EVAL=F}
+dir.create("data")
+```
+
 :::::::::::::::::::::::::::::::::::::::  challenge
+####Challenge: Create subdirectories for `scripts` and `results`
+:::::::::::::::::::::::::::::::::::::::  
+
+:::::::::::::::::::::::::::::::::::::::  solution
+```{r, EVAL=F}
+dir.create("scripts")
+dir.create("results")
+
+```
+:::::::::::::::::::::::::::::::::::::::  
+
+Now when you use `list.files()`, you should see the R project, as well as these 3 added directories! 
 
 #### Challenge: Download the gapminder data from [this link to a csv file](https://swcarpentry.github.io/r-novice-gapminder/data/gapminder_data.csv).
 
@@ -499,23 +526,43 @@ project, and some of the analyses get shared between projects.
 We will load and inspect these data later.
 :::::::::::::::::::::::::::::::::::::::  
 
-### Project Directory Fundamentals 
-
-Knowing R's current working directory is important because when you need to access other files (for example, to import a data file), R will look for them relative to the current working directory.
-
-Each time you create a new RStudio Project, it will create a new directory for that project. When you open an existing `.Rproj` file, it will open that project and set R's working directory to the folder that file is in.
 
 
-You can check the current working directory with the `getwd()` command, or by using the menus in RStudio.
 
-1. In the console, type `getwd()` ("wd" is short for "working directory") and hit Enter.
-2. In the Files pane, double click on the `data` folder to open it (or navigate to any other folder you wish). To get the Files pane back to the current working directory, click "More" and then select "Go To Working Directory".
+
+
+
+
+
 
 :::::::::::::::::::::::::::::::::::::::::  tip
 #### Tip: Keep your working directory and project directory the same
 
 Although you can change the working directory with `setwd()`, or by using RStudio menus, we do not suggest this. Instead, use relative file paths to navigate your working directory. This ensures that your code is reproducible and easy to follow. 
 :::::::::::::::::::::::::::::::::::::::::  
+
+Moving around our directory requires the use of **file paths**. There are two way you can write file paths: 
+1. Absolute path
+2. Relative path
+
+The absolute path defines every directory and subdirectory that a file is contained in, while a relative path only defines the directories relative to your working directory. Relative paths can be a lot quicker to write and they are not dependent on each individual user, making them more reproducible. For that reason, we will use relative file paths today (but see a challenge at the end if you want to test your absolute file path skills).
+
+
+
+
+
+
+
+
+
+
+### Project Directory Fundamentals 
+
+
+
+
+
+
 
 
 There are a few useful commands you can use to interact with the R session.
@@ -550,20 +597,6 @@ rm(temp.env)
 ```{r, eval=F}
 list.files()
 ```
-
-Moving around our directory requires the use of **file paths**. There are two way you can write file paths: 
-1. Absolute path
-2. Relative path
-
-The absolute path defines every directory and subdirectory that a file is contained in, while a relative path only defines the directories relative to your working directory. Relative paths can be a lot quicker to write and they are not dependent on each individual user, making them more reproducible. For that reason, we will use relative file paths today (but see a challenge at the end if you want to test your absolute file path skills).
-
-
-
-
-
-
-
-
 
 
 
