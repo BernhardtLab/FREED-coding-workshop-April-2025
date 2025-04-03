@@ -501,29 +501,47 @@ project, and some of the analyses get shared between projects.
 We will load and inspect these data later.
 :::::::::::::::::::::::::::::::::::::::  
 
-### Project Directory Navigation Fundamentals 
-
+### Project Directory Fundamentals 
 
 Knowing R's current working directory is important because when you need to access other files (for example, to import a data file), R will look for them relative to the current working directory.
 
 Each time you create a new RStudio Project, it will create a new directory for that project. When you open an existing `.Rproj` file, it will open that project and set R's working directory to the folder that file is in.
+
 
 You can check the current working directory with the `getwd()` command, or by using the menus in RStudio.
 
 1. In the console, type `getwd()` ("wd" is short for "working directory") and hit Enter.
 2. In the Files pane, double click on the `data` folder to open it (or navigate to any other folder you wish). To get the Files pane back to the current working directory, click "More" and then select "Go To Working Directory".
 
-You can change the working directory with `setwd()`, or by using RStudio menus.
+:::::::::::::::::::::::::::::::::::::::::  tip
+#### Tip: Keep your working directory and project directory the same
 
-1. In the console, type `setwd("data")` and hit Enter. Type `getwd()` and hit Enter to see the new working directory.
-2. In the menus at the top of the RStudio window, click the "Session" menu button, and then select "Set Working Directory" and then "Choose Directory". Next, in the windows navigator that opens, navigate back to the project directory, and click "Open". Note that a `setwd` command will automatically appear in the console.
+Although you can change the working directory with `setwd()`, or by using RStudio menus, we do not suggest this. Instead, use relative file paths to navigate your working directory. This ensures that your code is reproducible and easy to follow. 
+:::::::::::::::::::::::::::::::::::::::::  
+
+
+:::::::::::::::::::::::::::::::::::::::::  challenge 
+
+
+
+
+:::::::::::::::::::::::::::::::::::::::::  
+
+
+
+
+
+
+
+
+
+
 
 :::::::::::::::::::::::::::::::::::::::::  tip
 
-## Tip: File does not exist errors
+#### Tip: File does not exist errors
 
-When you're attempting to reference a file in your R code and you're getting errors saying the file doesn't exist, it's a good idea to check your working directory.
-You need to either provide an absolute path to the file, or you need to make sure the file is saved in the working directory (or a subfolder of the working directory) and provide a relative path.
+When you're attempting to reference a file in your R code and you're getting errors saying the file doesn't exist, it's a good idea to check your working directory and your file path. These errors can often be fixed by revising the file path or changing the working directory need to either provide an absolute path to the file, or you need to make sure the file is saved in the working directory (or a subfolder of the working directory) and provide a relative path.
 
 :::::::::::::::::::::::::::::::::::::::::  
 
@@ -555,58 +573,8 @@ ls(temp.env)
 rm(temp.env)
 ```
 
-:::::::::::::::::::::::::::::::::::::::::  tip
-
-You can use `rm` to delete objects you no longer need:
-
-```{r, eval=FALSE}
-rm(x)
-```
-
-If you have lots of things in your environment and want to delete all of them,
-you can pass the results of `ls` to the `rm` function:
-
-```{r, eval=FALSE}
-rm(list = ls())
-```
-
-In this case we've combined the two. Like the order of operations, anything
-inside the innermost parentheses is evaluated first, and so on.
-
-In this case we've specified that the results of `ls` should be used for the
-`list` argument in `rm`. When assigning values to arguments by name, you *must*
-use the `=` operator!!
-
-If instead we use `<-`, there will be unintended side effects, or you may get an error message:
-
-```{r, error=TRUE}
-rm(list <- ls())
-```
-
-:::::::::::::::::::::::::::::::::::::::::  tip
-
-#### Tip: Warnings vs. Errors
-
-Pay attention when R does something unexpected! Errors, like above,
-are thrown when R cannot proceed with a calculation. Warnings on the
-other hand usually mean that the function has run, but it probably
-hasn't worked as expected.
-
-In both cases, the message that R prints out usually give you clues
-how to fix a problem.
-
-:::::::::::::::::::::::::::::::::::::::::
 
 
-:::::::::::::::::::::::::::::::::::::::::  tip
-
-#### Tip: Canceling commands
-Canceling a command isn't only useful for killing incomplete commands:
-you can also use it to tell R to stop running code (for example if it's
-taking much longer than you expect), or to get rid of the code you're
-currently writing.
-
-:::::::::::::::::::::::::::::::::::::::::
 ## R Packages
 
 It is possible to add functions to R by writing a package, or by
@@ -775,6 +743,22 @@ install.packages("ggplot2", dependencies = TRUE)
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
+
+### How to find help
+
+:::::::::::::::::::::::::::::::::::::::::  tip
+
+#### Tip: Warnings vs. Errors
+
+Pay attention when R does something unexpected! Errors, like above,
+are thrown when R cannot proceed with a calculation. Warnings on the
+other hand usually mean that the function has run, but it probably
+hasn't worked as expected.
+
+In both cases, the message that R prints out usually give you clues
+how to fix a problem.
+
+:::::::::::::::::::::::::::::::::::::::::
 
 Don't worry about trying to remember every function in R. You
 can look them up on Google, or if you can remember the
