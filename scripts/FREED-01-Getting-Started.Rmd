@@ -509,17 +509,21 @@ dir.create("data")
 
 :::::::::::::::::::::::::::::::::::::::  
 
-:::::::::::::::::::::::::::::::::::::::  solution
 
-#### Solution
+<input type="checkbox" id="solution-toggle" style="display:none;" />
+<label for="solution-toggle" class="toggle-label">Click to show the solution</label>
+<div id="solution-content" class="solution">
+
+<h4>Solution:</h4>
 
 ```{r, eval=F}
 dir.create("scripts")
 dir.create("results")
 
 ```
+</div>
 
-:::::::::::::::::::::::::::::::::::::::  
+
 
 Now when you use `list.files()`, you should see the R project, as well as these 3 added directories! 
 
