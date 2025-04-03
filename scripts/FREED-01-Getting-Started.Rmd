@@ -450,7 +450,7 @@ interfering with each other.
 
 :::::::::::::::::::::::::::::::::::::::  
 
-Each time you create a new RStudio Project, it will create a new directory for that project. When you open an existing `.Rproj` file, it will open that project and set R's working directory to the folder that file is in.
+Each time you create a new RStudio Project, it will create a new directory (folder) for that project. When you open an existing `.Rproj` file, it will open that project and set R's working directory to the folder that file is in.
 
 You can check the current working directory with the `getwd()` command, or by using the menus in RStudio.
 In the console, type `getwd()` ("wd" is short for "working directory") and hit Enter.
@@ -499,105 +499,80 @@ To list the files in your current directory, use the `list.files()` command in y
 
 To create a subdirectory for our `data`, we will use the `dir.create()` command.
 
-```{r, EVAL=F}
+```{r, eval=FALSE}
 dir.create("data")
 ```
 
 :::::::::::::::::::::::::::::::::::::::  challenge
-####Challenge: Create subdirectories for `scripts` and `results`
+
+#### Challenge: Create subdirectories for `scripts` and `results`
+
 :::::::::::::::::::::::::::::::::::::::  
 
 :::::::::::::::::::::::::::::::::::::::  solution
-```{r, EVAL=F}
+
+#### Solution
+
+```{r, eval=F}
 dir.create("scripts")
 dir.create("results")
 
 ```
+
 :::::::::::::::::::::::::::::::::::::::  
 
 Now when you use `list.files()`, you should see the R project, as well as these 3 added directories! 
 
+Your directory now looks like this
+
+![Directory Diagram](../fig/Directory_Structure.png){width=40%}
+
+:::::::::::::::::::::::::::::::::::::::  tip
+
+#### Tip: Look at the Files Panel
+You can look at the bottom right panel in R Studio to see the list of files and folders in your directory. You can navigate to different folders here without changing your working directory.
+
+:::::::::::::::::::::::::::::::::::::::  
+
+### Directory Navigation 
+
+Moving around the directory requires the use of **file paths**. There are two way you can write file paths: 
+1. Absolute path
+2. Relative path
+
+The absolute path defines every directory and subdirectory that a file is contained in, while a relative path only defines the directories relative to your working directory. Relative paths are a lot quicker to write and are not dependent on folders that might not exist on everyone's system, making them more reproducible. For that reason, we will use relative file paths today (but see a challenge at the end if you want to test your absolute file path skills).
+
+**Moving down** in a directory, into a subdirectory, via a relative filepath requires that you simply add the name of the subdirectory to the filepath. Names in R need to be surrounded by "". 
+
+For example, the relative file path to `results` would be `results/`. We can use this in conjunction with our `list.files()` command to see the files in the `results` subdirectory. 
+
+![](../fig/01-directory2.png){width=25%}
+
+```{r, eval=F}
+list.files("results/")
+```
+
+:::::::::::::::::::::::::::::::::::::::  challenge
 #### Challenge: Download the gapminder data from [this link to a csv file](https://swcarpentry.github.io/r-novice-gapminder/data/gapminder_data.csv).
 
 1. Download the file (right mouse click on the link above -> "Save link as" / "Save file as", or click on the link and after the page loads, press <kbd>Ctrl</kbd>\+<kbd>S</kbd> or choose File -> "Save page as")
 2. Make sure it's saved under the name `gapminder_data.csv`
 3. Save the file in the `data/` folder within your project. This may require you to move it from your `Downloads` folder. 
 
+Double-check that this file is where it should be using list.files() and relative file path together. 
+
 We will load and inspect these data later.
 :::::::::::::::::::::::::::::::::::::::  
 
 
+:::::::::::::::::::::::::::::::::::::::  solution
 
-
-
-
-
-
-
-
-:::::::::::::::::::::::::::::::::::::::::  tip
-#### Tip: Keep your working directory and project directory the same
-
-Although you can change the working directory with `setwd()`, or by using RStudio menus, we do not suggest this. Instead, use relative file paths to navigate your working directory. This ensures that your code is reproducible and easy to follow. 
-:::::::::::::::::::::::::::::::::::::::::  
-
-Moving around our directory requires the use of **file paths**. There are two way you can write file paths: 
-1. Absolute path
-2. Relative path
-
-The absolute path defines every directory and subdirectory that a file is contained in, while a relative path only defines the directories relative to your working directory. Relative paths can be a lot quicker to write and they are not dependent on each individual user, making them more reproducible. For that reason, we will use relative file paths today (but see a challenge at the end if you want to test your absolute file path skills).
-
-
-
-
-
-
-
-
-
-
-### Project Directory Fundamentals 
-
-
-
-
-
-
-
-
-There are a few useful commands you can use to interact with the R session.
-
-`ls` will list all of the variables and functions stored in the global environment
-(your working R session):
-
-```{r, eval=FALSE}
-ls()
-```
-
-```{r, echo=FALSE}
-# If `ls()` is left to run by itself when rendering this Rmd document (as would
-# happen if the code chunk above was evaluated), the output would contain extra
-# items ("args", "dest_md", "op", "src_md") that people following the lesson
-# would not see in their own session.
-#
-# This probably comes from the way the md episodes are generated when the
-# lesson website is built. The solution below uses a temporary environment to
-# mimick what the learners should observe when running `ls()` on their
-# machines.
-
-temp.env <- new.env()
-temp.env$x <- x
-temp.env$y <- y
-ls(temp.env)
-rm(temp.env)
-```
-
-'list.files' will list all the files in your current directory
+#### Solution 
 
 ```{r, eval=F}
-list.files()
+list.files("data/")
 ```
-
+:::::::::::::::::::::::::::::::::::::::  
 
 
 :::::::::::::::::::::::::::::::::::::::::  tip
@@ -609,7 +584,24 @@ When you're attempting to reference a file in your R code and you're getting err
 :::::::::::::::::::::::::::::::::::::::::  
 
 
-## R Packages
+**Moving up in a directory**  requires us to tell R to go one level up using `../` 
+In the example below, `Documents` is the directory one level up from our project directory. Using `../` would then situate you in the `Documents` directory. 
+
+![](../fig/01-directory3.png){width=25%}
+
+We can list the files in the directory one level up fom our project directory using the `list.files()` command and our relative file path: 
+
+```{r, eval=F}
+list.files("../")
+```
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+#### Challenge: Choose a directory/folder on your computer using your file system. List the files in that folder using `list.files()` and a relative file path. 
+
+:::::::::::::::::::::::::::::::::::::::  
+
+### R Packages
 
 It is possible to add functions to R by writing a package, or by
 obtaining a package written by someone else. As of this writing, there
@@ -627,6 +619,71 @@ network). R and RStudio have functionality for managing packages:
 Packages can also be viewed, loaded, and detached in the Packages tab of the lower right panel in RStudio. Clicking on this tab will display all of the installed packages with a checkbox next to them. If the box next to a package name is checked, the package is loaded and if it is empty, the package is not loaded. Click an empty box to load that package and click a checked box to detach that package.
 
 Packages can be installed and updated from the Package tab with the Install and Update buttons at the top of the tab.
+
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+
+#### Challenge: Install the following packages: `tidyverse`, `gapminder`.
+Note: You may get a flag about needing to install dependencies. If you do, click "yes" or add `, dependencies = TRUE` to your code. 
+
+:::::::::::::::::::::::::::::::::::::::  
+
+
+:::::::::::::::::::::::::::::::::::::::  solution
+
+#### Solution
+
+We can use the `install.packages()` command to install the required packages.
+
+```{r, eval=FALSE}
+install.packages("tidyverse")
+install.packages("gapminder")
+```
+
+An alternate solution, to install multiple packages with a single `install.packages()` command is:
+
+```{r, eval=FALSE}
+install.packages(c("tidyverse", "gapminder"))
+```
+
+:::::::::::::::::::::::::::::::::::::::  
+
+
+:::::::::::::::::::::::::::::::::::::::: keypoints
+
+- Use RStudio to write and run R programs.
+- R has the usual arithmetic operators and mathematical functions.
+- Use `<-` to assign values to variables.
+- Use `ls()` to list the variables in a program.
+- Use `install.packages()` to install packages (libraries).
+
+::::::::::::::::::::::::::::::::::::::::::::::::::
+
+
+:::::::::::::::::::::::::::::::::::::::  tip
+
+#### Tip: How to find help
+Don't worry about trying to remember every function in R. You
+can look them up on Google, or if you can remember the
+start of the function's name, use the tab completion in RStudio.
+
+This is one advantage that RStudio has over R on its own, it
+has auto-completion abilities that allow you to more easily
+look up functions, their arguments, and the values that they
+take.
+
+Typing a `?` before the name of a command will open the help page
+for that command. When using RStudio, this will open the 'Help' pane;
+if using R in the terminal, the help page will open in your browser.
+The help page will include a detailed description of the command and
+how it works. Scrolling to the bottom of the help page will usually
+show a collection of code examples which illustrate command usage.
+We'll go through an example later.
+
+:::::::::::::::::::::::::::::::::::::::  
+
+#### Bonus
+
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -681,6 +738,10 @@ of `r age` to the variable age.
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+
+
+
+
 :::::::::::::::::::::::::::::::::::::::  challenge
 
 #### Challenge 3
@@ -707,93 +768,20 @@ This should yield a boolean value of TRUE since `r mass` is greater than `r age`
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-#### Challenge 5
-
-Install the following packages: `ggplot2`, `plyr`, `gapminder`
-
-:::::::::::::::  solution
-
-#### Solution to challenge 5
-
-We can use the `install.packages()` command to install the required packages.
-
-```{r ch5-sol, eval=FALSE}
-install.packages("ggplot2")
-install.packages("plyr")
-install.packages("gapminder")
-```
-
-An alternate solution, to install multiple packages with a single `install.packages()` command is:
-
-```{r ch5-sol2, eval=FALSE}
-install.packages(c("ggplot2", "plyr", "gapminder"))
-```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::: instructor
-
-When installing ggplot2, it may be required for some users to use the dependencies flag as a result of lazy loading affecting the install. This suggestion is not tied to any known bug discussion, and is advised based off instructor feedback/experience in resolving stochastic occurences of errors identified through delivery of this workshop:
-
-```{r ch5-sol3, eval=FALSE}
-install.packages("ggplot2", dependencies = TRUE)
-```
-
-:::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::::::::::::::::: keypoints
-
-- Use RStudio to write and run R programs.
-- R has the usual arithmetic operators and mathematical functions.
-- Use `<-` to assign values to variables.
-- Use `ls()` to list the variables in a program.
-- Use `rm()` to delete objects in a program.
-- Use `install.packages()` to install packages (libraries).
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 
 
-### How to find help
+
+
+>> pattern 
+
+
 
 :::::::::::::::::::::::::::::::::::::::::  tip
+#### Tip: Keep your working directory and project directory the same
 
-#### Tip: Warnings vs. Errors
-
-Pay attention when R does something unexpected! Errors, like above,
-are thrown when R cannot proceed with a calculation. Warnings on the
-other hand usually mean that the function has run, but it probably
-hasn't worked as expected.
-
-In both cases, the message that R prints out usually give you clues
-how to fix a problem.
-
-:::::::::::::::::::::::::::::::::::::::::
-
-Don't worry about trying to remember every function in R. You
-can look them up on Google, or if you can remember the
-start of the function's name, use the tab completion in RStudio.
-
-This is one advantage that RStudio has over R on its own, it
-has auto-completion abilities that allow you to more easily
-look up functions, their arguments, and the values that they
-take.
-
-Typing a `?` before the name of a command will open the help page
-for that command. When using RStudio, this will open the 'Help' pane;
-if using R in the terminal, the help page will open in your browser.
-The help page will include a detailed description of the command and
-how it works. Scrolling to the bottom of the help page will usually
-show a collection of code examples which illustrate command usage.
-We'll go through an example later.
-
-
-#### Bonus Challenges
-
+Although you can change the working directory with `setwd()`, or by using RStudio menus, we do not suggest this. Instead, use relative file paths to navigate your working directory. This ensures that your code is reproducible and easy to follow. 
+:::::::::::::::::::::::::::::::::::::::::  
 
 
 :::::::::::::::::::::::::::::::::::::::::  challenge 
