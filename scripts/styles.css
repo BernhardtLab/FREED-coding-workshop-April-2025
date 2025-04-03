@@ -93,7 +93,12 @@
 #solution-toggle-10:checked + .toggle-label + #solution-content-10,
 #solution-toggle-11:checked + .toggle-label + #solution-content-11,
 #solution-toggle-12:checked + .toggle-label + #solution-content-12,
-#solution-toggle-13:checked + .toggle-label + #solution-content-13 {  
+#solution-toggle-13:checked + .toggle-label + #solution-content-13,
+#solution-toggle-14:checked + .toggle-label + #solution-content-14,
+#solution-toggle-15:checked + .toggle-label + #solution-content-15,
+#solution-toggle-16:checked + .toggle-label + #solution-content-16,
+#solution-toggle-17:checked + .toggle-label + #solution-content-17,
+#solution-toggle-18:checked + .toggle-label + #solution-content-18{  
   display: block;
   border-left: 5px solid #31A354;
   padding: 10px 15px 10px 20px;

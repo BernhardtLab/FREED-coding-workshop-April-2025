@@ -3,21 +3,27 @@ title: "Data Frame Manipulation with dplyr"
 teaching: 40
 exercises: 15
 source: Rmd
+output:
+  html_document:
+    css: styles.css
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives
+
+#### Objectives 
 
 - To be able to use the six main data frame manipulation 'verbs' with pipes in  `dplyr`.
 - To understand how `group_by()` and `summarize()` can be combined to summarize datasets.
 - Be able to analyze a subset of data using logical filtering.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::: 
 
 :::::::::::::::::::::::::::::::::::::::: questions
+#### Question 
 
 - How can I manipulate data frames without repeating myself?
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::: 
 
 First, let's get our environment ready by loading the data and necessary packages. Tidyverse includes dplyr and ggplot2, which we will be using here.
 ```{r, include=FALSE}
@@ -58,17 +64,16 @@ in a way that will reduce the above repetition, reduce the probability of making
 errors, and probably even save you some typing. As an added bonus, you might
 even find the `dplyr` grammar easier to read.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+:::::::::::::::::::::::::::::::::::::::::  tip
 
-## Tip: Tidyverse
-
+#### Tip: Tidyverse
 `dplyr` package belongs to a broader family of opinionated R packages
 designed for data science called the "Tidyverse". These
 packages are specifically designed to work harmoniously together.
 Some of these packages will be covered along this course, but you can find more
 complete information here: [https://www.tidyverse.org/](https://www.tidyverse.org/).
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::  
 
 Here we're going to cover 5 of the most commonly used functions as well as using
 pipes (`%>%`) to combine them.
@@ -101,7 +106,7 @@ variables you select.
 year_country_gdp <- select(gapminder, year, country, gdpPercap)
 ```
 
-![](fig/13-dplyr-fig1.png){alt='Diagram illustrating use of select function to select two columns of a data frame'}
+![](../fig/13-dplyr-fig1.png){alt='Diagram illustrating use of select function to select two columns of a data frame'}
 If we want to remove one column only from the `gapminder` data, for example,
 removing the `continent` column.
 
@@ -129,9 +134,9 @@ gets that from the previous pipe.
 
 Pipes are very handy and can help you keep your code looking nice and tidy! The keyboard shortcut for adding a pipe is:  `cmd + shift + m` on a mac and `ctrl + shift + m` on a PC.
 
-:::::::::::::::::::::::::::::::::::::::::  callout
+:::::::::::::::::::::::::::::::::::::::::  tip
 
-## Tip: Renaming data frame columns in dplyr
+#### Tip: Renaming data frame columns in dplyr
 
 In Chapter 4 we covered how you can rename columns with base R by assigning a value to the output of the `names()` function.
 Just like select, this is a bit cumbersome, but thankfully dplyr has a `rename()` function.
@@ -147,7 +152,7 @@ head(tidy_gdp)
 
 Quick challenge: Why doesn't the rename command require a double equals sign?
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::::  
 
 ## Using filter()
 
@@ -177,16 +182,20 @@ Here we used a comma to separate multiple conditions we'd like to be true within
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge 1
+#### Challenge 1
 
 Write a single command (which can span multiple lines and includes pipes) that
 will produce a data frame that has the African values for `lifeExp`, `country`
 and `year`, but not for other Continents. How many rows does your data frame
 have and why? How else could you check that this worked properly?
 
-:::::::::::::::  solution
+:::::::::::::::::::::::::::::::::::::::  
 
-## Solution to Challenge 1
+
+<input type="checkbox" id="solution-toggle-14" style="display:none;" />
+<label for="solution-toggle-14" class="toggle-label">Click to show the solution</label>
+<div id="solution-content-14" class="solution">
+<h4>Solution to Challenge 1:</h4>
 
 ```{r}
 year_country_lifeExp_Africa <- gapminder %>%
@@ -197,21 +206,21 @@ year_country_lifeExp_Africa <- gapminder %>%
 levels(as.factor(year_country_lifeExp_Africa$country)) #this looks correct
 
 ```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+</div>
 
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge 2
+#### Challenge 2
 
 Now, repeat the exercise above, but include values for `lifeExp`, `country`, and `year` for both Africa and Oceania, but not the other continents. How many rows does this data frame have and why? 
+:::::::::::::::::::::::::::::::::::::::  
 
-:::::::::::::::  solution
+<input type="checkbox" id="solution-toggle-15" style="display:none;" />
+<label for="solution-toggle-15" class="toggle-label">Click to show the solution</label>
+<div id="solution-content-15" class="solution">
+<h4>Solution to challenge 2:</h4>
 
-## Solution to Challenge 2
 
 ```{r}
 year_country_lifeExp_Afr_Oce <- gapminder %>% 
@@ -221,9 +230,8 @@ year_country_lifeExp_Afr_Oce <- gapminder %>%
 #check
 levels(as.factor(year_country_lifeExp_Afr_Oce$country)) #this looks correct
 ```
-:::::::::::::::::::::::::
+</div>
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 As with last time, first we pass the gapminder data frame to the `filter()`
 function, then we pass the filtered version of the gapminder data frame to the
@@ -253,7 +261,7 @@ You will notice that the structure of the data frame where we used `group_by()`
 `data.frame` which contains only the rows that correspond to the a particular
 value `continent` (at least in the example above).
 
-![](fig/13-dplyr-fig2.png){alt='Diagram illustrating how the group by function oraganizes a data frame into groups'}
+![](../fig/13-dplyr-fig2.png){alt='Diagram illustrating how the group by function oraganizes a data frame into groups'}
 
 ## Using summarize()
 
@@ -271,7 +279,7 @@ gdp_bycontinents <- gapminder %>%
     summarize(mean_gdpPercap = mean(gdpPercap))
 ```
 
-![](fig/13-dplyr-fig3.png){alt='Diagram illustrating the use of group by and summarize together to create a new variable'}
+![](../fig/13-dplyr-fig3.png){alt='Diagram illustrating the use of group by and summarize together to create a new variable'}
 
 ```{r, eval=FALSE}
 continent mean_gdpPercap
@@ -288,14 +296,16 @@ even better.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge 3
+#### Challenge 3
 
 1. Calculate the average life expectancy per country. 
 2. Use `filter()` to determine which country has the longest average life expectancy and which has the shortest average life expectancy?
+:::::::::::::::::::::::::::::::::::::::  
 
-:::::::::::::::  solution
-
-## Solution to Challenge 3
+<input type="checkbox" id="solution-toggle-16" style="display:none;" />
+<label for="solution-toggle-16" class="toggle-label">Click to show the solution</label>
+<div id="solution-content-16" class="solution">
+<h4>Solution to challenge 3:</h4>
 
 ```{r}
 lifeExp_bycountry <- gapminder %>%
@@ -329,10 +339,7 @@ lifeExp_bycountry %>%
    arrange(desc(country)) %>%
    head()
 ```
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::::::::::::
+</div>
 
 The function `group_by()` allows us to group by multiple variables. Let's group by `year` and `continent`.
 
@@ -479,15 +486,18 @@ gapminder %>%
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Challenge 4
+#### Challenge 4
 
 Make a graph that shows how population size has changed through time in each country that begins with the same letter as your given name (unless your first name begins with "X" or "Q", in which case, try your surname!). Colour the data by whether or not you were born yet (hint: create a new variable that does this using the `mutate` and `ifelse` functions). Use facets to display each country separately. 
 
 Bonus: Look up `labs`, `shape`, `linetype`, `theme`, or `facet_grid` in the ggplot2 documentation and add one more degree of customization to your graph!
+:::::::::::::::::::::::::::::::::::::::  
 
-:::::::::::::::  solution
+<input type="checkbox" id="solution-toggle-17" style="display:none;" />
+<label for="solution-toggle-17" class="toggle-label">Click to show the solution</label>
+<div id="solution-content-17" class="solution">
+<h4>Solution to challenge 4:</h4>
 
-## Solution to Challenge 4
 
 ```{r}
 gapminder %>% 
@@ -499,25 +509,24 @@ gapminder %>%
   facet_grid(~country)
   
 ```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+</div>
 
 
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-## Advanced Challenge
+#### Advanced Challenge
 
 Calculate the average life expectancy in 2002 of 2 randomly selected countries
 for each continent. Then arrange the continent names in reverse order.
 **Hint:** Use the `dplyr` functions `arrange()` and `sample_n()`, they have
 similar syntax to other dplyr functions. 
+::::::::::::::::::::::::::::::::::::::: 
 
-:::::::::::::::  solution
-
-## Solution to Advanced Challenge
+<input type="checkbox" id="solution-toggle-18" style="display:none;" />
+<label for="solution-toggle-18" class="toggle-label">Click to show the solution</label>
+<div id="solution-content-18" class="solution">
+<h4>Solution to Advanced Challenge:</h4>
 
 ```{r}
 lifeExp_2countries_bycontinents <- gapminder %>%
@@ -527,10 +536,7 @@ lifeExp_2countries_bycontinents <- gapminder %>%
    summarize(mean_lifeExp = mean(lifeExp)) %>%
    arrange(desc(mean_lifeExp))
 ```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
+</div>
 
 ## Other great resources
 
@@ -548,6 +554,6 @@ lifeExp_2countries_bycontinents <- gapminder %>%
 - Use `group_by()` and `summarize()` to work with subsets of data.
 - Use `mutate()` to create new variables.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::: 
 
 
