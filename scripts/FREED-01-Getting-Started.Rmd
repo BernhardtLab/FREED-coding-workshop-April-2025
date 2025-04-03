@@ -649,16 +649,6 @@ install.packages(c("tidyverse", "gapminder"))
 :::::::::::::::::::::::::::::::::::::::  
 
 
-:::::::::::::::::::::::::::::::::::::::: keypoints
-
-- Use RStudio to write and run R programs.
-- R has the usual arithmetic operators and mathematical functions.
-- Use `<-` to assign values to variables.
-- Use `ls()` to list the variables in a program.
-- Use `install.packages()` to install packages (libraries).
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
 
 :::::::::::::::::::::::::::::::::::::::  tip
 
@@ -681,6 +671,20 @@ show a collection of code examples which illustrate command usage.
 We'll go through an example later.
 
 :::::::::::::::::::::::::::::::::::::::  
+
+
+:::::::::::::::::::::::::::::::::::::::: keypoints
+
+- Use RStudio to write and run R programs.
+- R has the usual arithmetic operators and mathematical functions.
+- Use `<-` to assign values to variables.
+- Use `list.files()` to list the variables in a program.
+- Use `../` to move up a file path
+- Use `install.packages()` to install packages (libraries).
+
+:::::::::::::::::::::::::::::::::::::::: 
+
+
 
 #### Bonus
 
