@@ -87,7 +87,13 @@
 #solution-toggle-4:checked + .toggle-label + #solution-content-4,
 #solution-toggle-5:checked + .toggle-label + #solution-content-5,
 #solution-toggle-6:checked + .toggle-label + #solution-content-6,
-#solution-toggle-7:checked + .toggle-label + #solution-content-7 {  
+#solution-toggle-7:checked + .toggle-label + #solution-content-7,
+#solution-toggle-7:checked + .toggle-label + #solution-content-8,
+#solution-toggle-9:checked + .toggle-label + #solution-content-9,
+#solution-toggle-10:checked + .toggle-label + #solution-content-10,
+#solution-toggle-11:checked + .toggle-label + #solution-content-11,
+#solution-toggle-12:checked + .toggle-label + #solution-content-12,
+#solution-toggle-13:checked + .toggle-label + #solution-content-13 {  
   display: block;
   border-left: 5px solid #31A354;
   padding: 10px 15px 10px 20px;
