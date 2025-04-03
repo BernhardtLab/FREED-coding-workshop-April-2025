@@ -3,24 +3,30 @@ title: "Data Structures"
 teaching: 60
 exercises: 25
 source: Rmd
+output:
+  html_document:
+    css: styles.css
 ---
 
 ::::::::::::::::::::::::::::::::::::::: objectives
+
+#### Objectives 
 
 - To begin exploring data frames, and be able to visualize them in Rstudio.
 - To be able to ask questions from R about the type, class, and structure of an object.
 - To understand how to add rows or columns to a data frame.
 - To understand how to subset parts of data frames.
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+::::::::::::::::::::::::::::::::::::::: 
 
 :::::::::::::::::::::::::::::::::::::::: questions
+#### Questions
 
 - How can I read data in R?
 - What are the basic data types in R?
 - How can I manipulate a data frame?
 
-::::::::::::::::::::::::::::::::::::::::::::::::::
+:::::::::::::::::::::::::::::::::::::::: 
 
 ```{r, include=FALSE}
 options(stringsAsFactors = FALSE)
@@ -53,7 +59,7 @@ View(cats)
 ### Data Types
 
 We can now ask R about the structure of our dataframe — variables (columns) may be numbers, characters, or factors
-using the structure (str) command.
+using the structure `str` command.
 
 ```{r}
 str(cats)
@@ -155,12 +161,8 @@ names explicitly so the function knows what default values you are changing. Her
 are setting `row.names = FALSE`. Recall you can use `?write.csv` to pull
 up the help file to check out the argument names and their default values.
 
-##################################################################################################
+###NOTE TO SELF : this is not presently working. I can get this to work for the github just fine, but will need to coordinate with Amanda on the file directory we are expecting students to set up
 
-NOTE TO SELF : this is not presently working. I can get this to work for the github just fine, but will need to coordinate with Amanda on
-the file directory we are expecting students to set up
-
-##################################################################################################
 
 ```{r}
 write.csv(cats, "data/feline-data.csv")
@@ -230,127 +232,91 @@ gapminder[100:109,]
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
-### Challenge 1
+#### Challenge 1
 
 One of the most important parts of data analysis in R is ensuring that your data
 frame contains the information you think it does, and that it is correctly
 formatted. Here, we will look at our gapminder dataset and execute some of the
 data investigation tools we have gone over so far. 
 
-#### Copy the code template
-
-Create a new script in RStudio and copy and paste the following code. Then
-move on to the tasks below, which help you to fill in the gaps (\_\_\_\_\_\_).
-
-# JASON: I closed your ``` & your challenge chunk below 
-```
-```
-
 Using the object `gapminder`:
 
-# 1. Print the data
-_____
-
-# 2. Show an overview of the table with all data types
-_____(gapminder)
-
-# 3. Isolate the country, year, and population data for the 45th through 54th rows
-____________
-
-# 4. Create another country column, "country.fac", that contains country as 
+1. Print the data
+2. Show an overview of the table with all data types
+3. Isolate the country, year, and population data for the 45th through 54th rows
+4. Create another country column, "country.fac", that contains country as 
 a factor data type
-_____
 
-### Instructions for the tasks
-
-#### 1\. Print the data
-
-Print the data to the
-console
-
-:::::::::::::::  solution
-:::::::::::::::
-:::::::::::::::::::::::::::::::::::::::
+See below for a tip for each question in this challenge!
+:::::::::::::::::::::::::::::::::::::::  
 
 
-### Tip 1.1
 
+::::::::::::::::::::::::::::::::::::::: tip
+#### Tip 1.1
 Show the content of any data frame by typing its name.
+::::::::::::::::::::::::::::::::::::::: 
 
+::::::::::::::::::::::::::::::::::::::: tip
+#### Tip 1.2 
+In the chapter "Data types" we used a function to look at data types in our cats data frame.
+::::::::::::::::::::::::::::::::::::::: 
 
-### Solution to Challenge 1.1
-
-Two correct solutions:
-
-```
-gapminder
-print(gapminder)
-```
-
-
-
-#### 2\. Overview of the data types
-
-The data type of your data is as important as the data itself. Use a
-function we saw earlier to print out the data types of all columns of the
-`gapminder` `data.frame`.
-
-:::::::::::::::  solution
-
-### Tip 1.2
-
-In the chapter "Data types" we used a function to look at data types in our
-cats data frame.
-
-
-:::::::::::::::::::::::::
-
-> ### Solution to Challenge 1.2
-> 
-> ```
-> str(gapminder)
-> ```
-
-#### 3\. Print the country, year, and population data for the 45th through 54th rows
-
-:::::::::::::::  solution
-
-### Tip 1.3
-
+::::::::::::::::::::::::::::::::::::::: tip
+#### Tip 1.3
 Use the head() or tail() command to remind yourself of where these columns fall
 in the dataset.
 
 Revisit the "Subsetting data frames numerically" chapter for help specifying
 how to enter the required row and column numbers. 
+::::::::::::::::::::::::::::::::::::::: 
 
-
-:::::::::::::::::::::::::
-
-### Solution to Challenge 1.3
-
-gapminder[45:54,1:3]
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
-
-:::::::::::::::  solution
-
-### Tip 1.4
+::::::::::::::::::::::::::::::::::::::: tip
+#### Tip 1.4
 
 At the end of the "Data types" chapter we converted a column of our cats
 data frame to a factor.
 
 At the beginning of the "### "Adding rows and columns to data frames" we then
 added this back to our cats data frame. 
+::::::::::::::::::::::::::::::::::::::: 
 
 
-:::::::::::::::::::::::::
+<input type="checkbox" id="solution-toggle-7" style="display:none;" />
+<label for="solution-toggle-7" class="toggle-label">Click to show the solution</label>
+<div id="solution-content-7" class="solution">
+<h4>Solution to Challenge 1:</h4>
 
-> ### Solution to Challenge 1.4
-> 
-> ```
-> country.fac <- as.factor(gapminder$country)
-> gapminder <- cbind(gapminder, country.fac)
-> ```
+1. Print the data
+Two correct solutions:
+```{r, eval=F}
+gapminder
+```
+or
+```{r, eval=F}
+print(gapminder)
+```
+
+2. Show an overview of the table with all data types
+```{r, eval=F}
+str(gapminder)
+```
+
+3. Isolate the country, year, and population data for the 45th through 54th rows
+```{r, eval=F}
+gapminder[45:54,1:3]
+
+```
+
+4. Create another country column, "country.fac", that contains country as 
+a factor data type
+```{r, eval=F}
+country.fac <- as.factor(gapminder$country)
+gapminder <- cbind(gapminder, country.fac)
+```
+</div>
+
+
 
 ### Subsetting data frames based on entries
 
@@ -360,9 +326,8 @@ isolate data for a particular country of interest.
 
 We need to use our countries listed as a factor level for this to work.
 
-##################################################
-
-THIS ISNT WORKING IN THE CHUNK, BUT IS IN THE CONSOLE????
+####THIS ISNT WORKING IN THE CHUNK, BUT IS IN THE CONSOLE????
+####is it because youre not evaluating (or including) them? - A 
 
 
 ```{r, include=FALSE}
