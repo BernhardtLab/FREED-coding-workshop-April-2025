@@ -5,7 +5,6 @@ output:
     css: styles.css
     
 ---
-
 ::::::::::::::::::::::::::::::::::::::: objectives
 
 - Describe the purpose and use of each pane in RStudio 
@@ -14,7 +13,6 @@ output:
 - Assign data to a variable
 - Manage a workspace in an interactive R session
 - Use mathematical and comparison operators
-- Call functions
 - Manage packages
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
@@ -425,9 +423,8 @@ We're going to create a new project in RStudio:
 1. Click the "File" menu button, then "New Project".
 2. Click "New Directory".
 3. Click "New Project".
-4. Type in the name of the directory to store your project, e.g. "my\_project".
-5. If available, select the checkbox for "Create a git repository."
-6. Click the "Create Project" button.
+4. Type in the name of the directory to store your project. For today, we can use "FREED-coding-workshop-April-2025".
+5. Click the "Create Project" button.
 
 
 ::::::::::::::::::::::::::::::::::::::::::: tip
@@ -449,7 +446,7 @@ interfering with each other.
 #### Challenge: Opening an RStudio project through the file system
 
 1. Exit RStudio.
-2. Navigate to the directory where you created a project in Challenge 1.
+2. Navigate to the directory where you created a project in the last challenge.
 3. Double click on the `.Rproj` file in that directory.
 
 :::::::::::::::::::::::::::::::::::::::  
@@ -484,11 +481,12 @@ Since many analyses are exploratory and don't end up being used in the final
 project, and some of the analyses get shared between projects.
 
 **3. Keep the project directory organized and intuitive**
-1. Put each project in its own directory, which is named after the project.
-2. Put raw data and metadata in the `data` directory, and files generated during cleanup and analysis in a `results` directory.
-3. Put scripts in the `scripts` directory. 
-4. Put the output files in the output directory (e.g., processed data, figures).
-5. Name all files to reflect their content or function.
+
+   1. Put each project in its own directory, which is named after the project.
+   2. Put raw data and metadata in the `data` directory, and files generated during cleanup and analysis in a `results` directory.
+   3. Put scripts in the `scripts` directory.
+   4. Put the output files in the output directory (e.g., processed data, figures).
+   5. Name all files to reflect their content or function.
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -520,32 +518,6 @@ Although you can change the working directory with `setwd()`, or by using RStudi
 :::::::::::::::::::::::::::::::::::::::::  
 
 
-:::::::::::::::::::::::::::::::::::::::::  challenge 
-
-
-
-
-:::::::::::::::::::::::::::::::::::::::::  
-
-
-
-
-
-
-
-
-
-
-
-:::::::::::::::::::::::::::::::::::::::::  tip
-
-#### Tip: File does not exist errors
-
-When you're attempting to reference a file in your R code and you're getting errors saying the file doesn't exist, it's a good idea to check your working directory and your file path. These errors can often be fixed by revising the file path or changing the working directory need to either provide an absolute path to the file, or you need to make sure the file is saved in the working directory (or a subfolder of the working directory) and provide a relative path.
-
-:::::::::::::::::::::::::::::::::::::::::  
-
-
 There are a few useful commands you can use to interact with the R session.
 
 `ls` will list all of the variables and functions stored in the global environment
@@ -573,6 +545,35 @@ ls(temp.env)
 rm(temp.env)
 ```
 
+'list.files' will list all the files in your current directory
+
+```{r, eval=F}
+list.files()
+```
+
+Moving around our directory requires the use of **file paths**. There are two way you can write file paths: 
+1. Absolute path
+2. Relative path
+
+The absolute path defines every directory and subdirectory that a file is contained in, while a relative path only defines the directories relative to your working directory. Relative paths can be a lot quicker to write and they are not dependent on each individual user, making them more reproducible. For that reason, we will use relative file paths today (but see a challenge at the end if you want to test your absolute file path skills).
+
+
+
+
+
+
+
+
+
+
+
+:::::::::::::::::::::::::::::::::::::::::  tip
+
+#### Tip: File does not exist errors
+
+When you're attempting to reference a file in your R code and you're getting errors saying the file doesn't exist, it's a good idea to check your working directory and your file path. These errors can often be fixed by revising the file path or changing the working directory need to either provide an absolute path to the file, or you need to make sure the file is saved in the working directory (or a subfolder of the working directory) and provide a relative path.
+
+:::::::::::::::::::::::::::::::::::::::::  
 
 
 ## R Packages
@@ -672,26 +673,6 @@ This should yield a boolean value of TRUE since `r mass` is greater than `r age`
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
-:::::::::::::::::::::::::::::::::::::::  challenge
-
-#### Challenge 4
-
-Clean up your working environment by deleting the mass and age
-variables.
-
-:::::::::::::::  solution
-
-#### Solution to challenge 4
-
-We can use the `rm` command to accomplish this task
-
-```{r ch4-sol}
-rm(age, mass)
-```
-
-:::::::::::::::::::::::::
-
-::::::::::::::::::::::::::::::::::::::::::::::::::
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -776,3 +757,24 @@ The help page will include a detailed description of the command and
 how it works. Scrolling to the bottom of the help page will usually
 show a collection of code examples which illustrate command usage.
 We'll go through an example later.
+
+
+#### Bonus Challenges
+
+
+
+:::::::::::::::::::::::::::::::::::::::::  challenge 
+#### Challenge: Find the absolute file path for this R script 
+
+:::::::::::::::::::::::::::::::::::::::::  
+
+:::::::::::::::::::::::::::::::::::::::::  solution 
+#### Solution
+
+We can start by checking the working directory we are in. This should be a list of directories followed by /FREED-coding-workshop-April-2025
+
+```{r, eval=F}
+getwd() #
+```
+
+:::::::::::::::::::::::::::::::::::::::::  
