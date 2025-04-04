@@ -18,6 +18,10 @@ However, to make using R easier, we will use the program RStudio, which we also 
 
 We will begin with raw data, perform exploratory analyses, and learn how to plot results graphically. This example starts with a dataset from [gapminder.org](https://www.gapminder.org) containing population information for many countries through time. Can you read the data into R? Can you plot the population for Senegal? Can you calculate the average income for countries on the continent of Asia? By the end of these lessons you will be able to do things like plot the populations for all of these countries in under a minute!
 
+
+
+
+
 | Module | Topic                                                                                                                                     | Lecture notes                                                                                                                              | Worksheet                                                                                                           | Supplementary resources                                                                                                                        |
 |---------------|---------------|---------------|---------------|---------------|
 | 1      | [Installation](https://htmlpreview.github.io/?https://github.com/BIOL4110/BIOL4110-course-website/blob/main/content/notes/notes-a00.html) | [Class 1 notes](https://htmlpreview.github.io/?https://github.com/BIOL4110/BIOL4110-course-website/blob/main/content/notes/notes-a00.html) |                                                                                                                     |                                                                                                                                                |
