@@ -226,8 +226,7 @@ exp(0.5)
 #### Tip Annotate your code
 
 Your code may be referenced in the future by others or even yourself. To make it easier to understand, it can be useful to annotate/ leave comments explaining what you are doing. 
-This can be done in your R script using #
-The text after each line of code is called a "comment". Anything that follows after the hash (or octothorpe) symbol
+This can be done in your R script using #. The text after each line of code is called a "comment". Anything that follows after the hash (or octothorpe) symbol
 `#` is ignored by R when it executes code.
 
 Copy the code below and see for yourself! 
