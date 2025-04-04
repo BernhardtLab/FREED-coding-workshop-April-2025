@@ -460,7 +460,7 @@ We're going to create a new project in RStudio:
 1. Click the "File" menu button, then "New Project".
 2. Click "New Directory".
 3. Click "New Project".
-4. Type in the name of the directory to store your project. For today, we can use "FREED-coding-workshop-April-2025".
+4. Type in the name of the directory to store your project. For today, we can use "FREED_R_Workshop".
 5. Click the "Create Project" button.
 
 ::::::::::::::::::::::::::::::::::::::::::: tip
