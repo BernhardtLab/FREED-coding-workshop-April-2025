@@ -373,6 +373,11 @@ structure of an object.</li>
 <li>How can I manipulate a data frame?</li>
 </ul>
 </div>
+<p>Let’s begin by creating a fresh empty script here, rather than
+continuing on with the first R script you created for the “Getting
+started” section.</p>
+<p>Consider giving it a descriptive title like “data-structures” and
+saving it in your scripts folder.</p>
 <p>One of R’s most powerful features is its ability to deal with tabular
 data - such as you may already have in a spreadsheet or a CSV file.
 Let’s start by making a toy dataset in your <code>data/</code>
@@ -380,6 +385,12 @@ directory, called <code>feline-data.csv</code>:</p>
 <pre class="r"><code>cats &lt;- data.frame(coat = c(&quot;calico&quot;, &quot;black&quot;, &quot;tabby&quot;),
                     weight = c(2.1, 5.0, 3.2),
                     likes_catnip = c(1, 0, 1))</code></pre>
+<p>In the line of code above, the <code>c()</code> command combines
+values into a vector — you can think of this a list of data points For
+example, the <code>coat = c(&quot;calico&quot;, &quot;black&quot;, &quot;tabby&quot;)</code> is
+returning a list of these three entries</p>
+<pre class="r"><code>c(&quot;calico&quot;, &quot;black&quot;, &quot;tabby&quot;)</code></pre>
+<pre><code>## [1] &quot;calico&quot; &quot;black&quot;  &quot;tabby&quot;</code></pre>
 <p>Let’s now view the cats data frame. We can to this a number of
 different ways. The first two commands print the data in your R console,
 while using the View command will open a separate tab with the data
@@ -416,6 +427,9 @@ in asking questions like:</p>
 <code>$</code> function.</p>
 <pre class="r"><code>cats$likes_catnip</code></pre>
 <pre><code>## [1] 1 0 1</code></pre>
+<p>Consider these results - do numbers really make sense as
+representations of whether cats like catnip or not? These are clearly
+stand-ins for yes or no — e.g. this is a factor variable!</p>
 <p>Now, we can convert this to a factor, and view its structure</p>
 <pre class="r"><code>factor_catnip &lt;-as.factor(cats$likes_catnip)
 
@@ -457,7 +471,10 @@ cbind(cats, age)</code></pre>
 cbind(cats, age)</code></pre>
 <pre><code>## Error in data.frame(..., check.names = FALSE): arguments imply differing number of rows: 3, 2</code></pre>
 <p>Why didn’t this work? Of course, R wants to see one element in our
-new column for every row in the table:</p>
+new column for every row in the table.</p>
+<p>We can use the <code>nrow()</code> function to calculate the number
+of rows in a data set, and the <code>length()</code> function to return
+the number of entries in a vector/list.</p>
 <pre class="r"><code>nrow(cats)</code></pre>
 <pre><code>## [1] 3</code></pre>
 <pre class="r"><code>length(age)</code></pre>
@@ -473,9 +490,10 @@ cats</code></pre>
 ## 1 calico    2.1            1             1   2
 ## 2  black    5.0            0             0   3
 ## 3  tabby    3.2            1             1   5</code></pre>
-<p>Now how about adding rows? We already know that the rows of a data
-frame are lists:</p>
-<pre class="r"><code>newRow &lt;- list(&quot;tortoiseshell&quot;, 3.3, TRUE, 1, 9)
+<p>Now how about adding rows? You can think of additional rows as a list
+of data points for a new 4th cat!</p>
+<pre class="r"><code>newRow &lt;- list(&quot;tortoiseshell&quot;, 3.3, 1, 1, 9)
+
 cats &lt;- rbind(cats, newRow)</code></pre>
 <p>Let’s confirm that our new row was added correctly.</p>
 <pre class="r"><code>cats</code></pre>
@@ -486,10 +504,9 @@ cats &lt;- rbind(cats, newRow)</code></pre>
 ## 4 tortoiseshell    3.3            1             1   9</code></pre>
 <p>We can now save <code>cats</code> as a CSV file. It is good practice
 to call the argument names explicitly so the function knows what default
-values you are changing. Here we are setting
-<code>row.names = FALSE</code>. Recall you can use
-<code>?write.csv</code> to pull up the help file to check out the
-argument names and their default values.</p>
+values you are changing. Recall you can use <code>?write.csv</code> to
+pull up the help file to check out the argument names and their default
+values.</p>
 <pre class="r"><code>write.csv(cats, &quot;data/feline-data.csv&quot;)</code></pre>
 </div>
 <div id="reading-in-larger-datafiles" class="section level3">
@@ -498,7 +515,8 @@ argument names and their default values.</p>
 Gapminder data set, which contains hundreds of global development
 indicators for countries across the globe.</p>
 <p>First, make sure that the <code>gapminder_data.csv</code> file is
-saved in your data folder.</p>
+saved in your data folder. Remember that this is the same dataset we
+downloaded into your data folder in the “Getting started” section.</p>
 <p>To load the data, we first need to load the tidyverse package that
 you previously installed. We use the <code>library()</code> function for
 this in R.</p>
@@ -561,9 +579,17 @@ function.</p>
 <p>When working with large datasets like this, you may often want to
 visualize smaller sections of the data frame, by subsetting it based on
 row and column number. Starting with columns only, we can use the
-following syntax to only show the 1st column of the data. Note that the
-space before the comma in the square brackets [,] is empty because we
-are asking R to show us the entries for every row.</p>
+following syntax to only show the 1st column of the data.</p>
+<p>For this we use square brackets <code>[,]</code> with a comma in the
+middle. To specify which rows we want R to consider, we would enter
+those numbers to the left of the comma. Column numbers go to the right
+of the comma, as in:
+<code>[row number here, column numbers here]</code>.</p>
+<p>Leaving either blank is telling R to show either all of the rows or
+columns.</p>
+<p>Below, note that the space before the comma in the square brackets
+[,] is empty because we are asking R to show us the entries for every
+row.</p>
 <p>Also note that we are wrapping this command with the
 <code>head()</code> function so that we only see the first 6 entries —
 we don’t want to print all 1704 rows again!</p>
@@ -781,10 +807,10 @@ happening.</p>
 <li><p>The <code>gapminder$country.fac</code> section is telling R to
 consider only data contained in the country.fac column of the gapminder
 dataset. This is the function of the <code>$</code> operator.</p></li>
-<li><p>The <code>==</code> in <code>==Country_name</code> is the logical
-operator. This is telling R to return whether or not the entry in the
-specified spot in our dataframe (e.g. the country.fac entry) matches the
-country_name we have asked it for here.</p></li>
+<li><p>The <code>==</code> in <code>==&quot;insert country name here&quot;</code>
+is the logical operator. This is telling R to return whether or not the
+entry in the specified spot in our dataframe (e.g. the country.fac
+entry) matches the country_name we have asked it for here.</p></li>
 </ol>
 <p>Let’s start by working with the top (head) of the dataset:</p>
 <pre class="r"><code>head(gapminder)</code></pre>

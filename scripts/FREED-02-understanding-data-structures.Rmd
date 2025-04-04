@@ -28,6 +28,11 @@ output:
 
 :::::::::::::::::::::::::::::::::::::::: 
 
+Let's begin by creating a fresh empty script here, rather than continuing on with 
+the first R script you created for the "Getting started" section.
+
+Consider giving it a descriptive title like "data-structures" and saving it in your scripts folder. 
+
 ```{r, include=FALSE}
 options(stringsAsFactors = FALSE)
 cats_orig <- data.frame(coat = c("calico", "black", "tabby"), weight = c(2.1, 5, 3.2), likes_catnip = c(1, 0, 1), stringsAsFactors = FALSE)
@@ -45,6 +50,12 @@ cats <- data.frame(coat = c("calico", "black", "tabby"),
                     likes_catnip = c(1, 0, 1))
 ```
 
+In the line of code above, the `c()` command combines values into a vector — you can think of this a list of data points
+For example, the `coat = c("calico", "black", "tabby")` is returning a list of these three entries
+
+```{r}
+c("calico", "black", "tabby")
+```
 Let's now view the cats data frame. We can to this a number of different ways. The first two commands print the data in your R console,
 while using the View command will open a separate tab with the data (next to your script name at the top).
 
@@ -79,6 +90,9 @@ Let's start by isolating the "likes_catnip" column visually using the `$` functi
 ```{r}
 cats$likes_catnip
 ```
+
+Consider these results - do numbers really make sense as representations of whether cats like catnip or not?
+These are clearly stand-ins for yes or no — e.g. this is a factor variable!
 
 Now, we can convert this to a factor, and view its structure
 
@@ -126,10 +140,13 @@ cbind(cats, age)
 ```
 
 Why didn't this work? Of course, R wants to see one element in our new column
-for every row in the table:
+for every row in the table.
+
+We can use the `nrow()` function to calculate the number of rows in a data set, and the `length()` function to return the number of entries in a vector/list.
 
 ```{r}
 nrow(cats)
+
 length(age)
 ```
 
@@ -142,11 +159,11 @@ cats <- cbind(cats, age)
 cats
 ```
 
-Now how about adding rows? We already know that the rows of a
-data frame are lists:
+Now how about adding rows? You can think of additional rows as a list of data points for a new 4th cat!
 
 ```{r}
-newRow <- list("tortoiseshell", 3.3, TRUE, 1, 9)
+newRow <- list("tortoiseshell", 3.3, 1, 1, 9)
+
 cats <- rbind(cats, newRow)
 ```
 
@@ -157,8 +174,7 @@ cats
 ```
 
 We can now save `cats` as a CSV file. It is good practice to call the argument
-names explicitly so the function knows what default values you are changing. Here we
-are setting `row.names = FALSE`. Recall you can use `?write.csv` to pull
+names explicitly so the function knows what default values you are changing. Recall you can use `?write.csv` to pull
 up the help file to check out the argument names and their default values.
 
 ```{r}
@@ -171,6 +187,7 @@ Okay, so now we are going to be working with a larger data set — the Gapminder
 hundreds of global development indicators for countries across the globe.
 
 First, make sure that the `gapminder_data.csv` file is saved in your data folder.
+Remember that this is the same dataset we downloaded into your data folder in the "Getting started" section.
 
 To load the data, we first need to load the tidyverse package that you previously installed.
 We use the `library()` function for this in R.
@@ -211,7 +228,13 @@ tail(gapminder)
 
 When working with large datasets like this, you may often want to visualize smaller sections of the data frame, by subsetting
 it based on row and column number. Starting with columns only, we can use the following syntax to only show the 1st column of the data.
-Note that the space before the comma in the square brackets [,] is empty because we are asking R to show us the entries for every row.
+
+For this we use square brackets `[,]` with a comma in the middle. To specify which rows we want R to consider, we would enter those 
+numbers to the left of the comma. Column numbers go to the right of the comma, as in: `[row number here, column numbers here]`.
+
+Leaving either blank is telling R to show either all of the rows or columns. 
+
+Below, note that the space before the comma in the square brackets [,] is empty because we are asking R to show us the entries for every row.
 
 Also note that we are wrapping this command with the `head()` function so that we only see the first 6 entries — we don't want to print all 1704 rows again!
 
@@ -358,7 +381,7 @@ Let's break the script below into 2 pieces to make clearer what is happening.
 1. The `gapminder$country.fac` section is telling R to consider only data contained in the country.fac column of the gapminder dataset.
 This is the function of the `$` operator.
 
-2. The `==` in `==Country_name` is the logical operator. This is telling R to return whether or not the entry in the specified spot in
+2. The `==` in `=="insert country name here"` is the logical operator. This is telling R to return whether or not the entry in the specified spot in
 our dataframe (e.g. the country.fac entry) matches the country_name we have asked it for here. 
 
 Let's start by working with the top (head) of the dataset:
