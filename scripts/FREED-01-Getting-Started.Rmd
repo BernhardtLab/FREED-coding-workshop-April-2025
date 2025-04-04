@@ -469,7 +469,7 @@ principles to adhere to that will make project management easier:
 
 **1. Treat data as read only**
 
-This is probably the most important goal of setting up a project. Data is
+This is probably the most important goal of setting up a project. Data are
 typically time consuming and/or expensive to collect. Working with them
 interactively (e.g., in Excel) where they can be modified means you are never
 sure of where the data came from, or how it has been modified since collection.
