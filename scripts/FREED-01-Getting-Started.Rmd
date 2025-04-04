@@ -1,5 +1,5 @@
 ---
-title: "FREED-01-Getting-Started"
+title: "Getting Started"
 output:
   html_document:
     css: styles.css
