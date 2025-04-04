@@ -161,9 +161,6 @@ names explicitly so the function knows what default values you are changing. Her
 are setting `row.names = FALSE`. Recall you can use `?write.csv` to pull
 up the help file to check out the argument names and their default values.
 
-###NOTE TO SELF : this is not presently working. I can get this to work for the github just fine, but will need to coordinate with Amanda on the file directory we are expecting students to set up
-
-
 ```{r}
 write.csv(cats, "data/feline-data.csv")
 ```
@@ -175,13 +172,13 @@ hundreds of global development indicators for countries across the globe.
 
 First, make sure that the gapminder_data.csv file is saved in your data folder.
 
-```{r, include=FALSE}
+```{r}
 gapminder <- read.csv("data/gapminder_data.csv", header = TRUE)
 ```
 
 Let's look at the data!
 
-```{r, include=FALSE}
+```{r}
 gapminder
 
 View(gapminder)
@@ -189,7 +186,7 @@ View(gapminder)
 
 As you can see this is a huge dataset! Let's first find out just how many entries it contains, then look only at its first few entires
 
-```{r, include=FALSE}
+```{r}
 nrow(gapminder)
 
 head(gapminder)
@@ -197,7 +194,7 @@ head(gapminder)
 
 We can also examine its last rows using the tail function.
 
-```{r, include=FALSE}
+```{r}
 tail(gapminder)
 ```
 
@@ -207,26 +204,28 @@ When working with large datasets like this, you may often want to visualize smal
 it based on row and column number. Starting with columns only, we can use the following syntax to only show the 1st column of the data.
 Note that the space before the comma in the square brackets [,] is empty because we are asking R to show us the entries for every row.
 
-```{r, include=FALSE}
-gapminder[,1]
+Also note that we are wrapping this command with the head() function so that we only see the first 6 entries — we don't want to print all 1704 rows again!
+
+```{r}
+head(gapminder[,1])
 ```
 
 We can now ask R to show us the entries for the 2nd through 4th columns, using a continuous span of numbers.
 
-```{r, include=FALSE}
-gapminder[,2:4]
+```{r}
+head(gapminder[,2:4])
 ```
 
 Now we will move on to specifiying which rows of the data frame to pull up. This number appears before the comma. Leaving the column number
 (ie. the entry after the comma) means that data will be displayed for all columns of the row(s) specified.
 
-```{r, include=FALSE}
+```{r}
 gapminder[1,]
 ```
 
 Here again, we can specify a range of numbers to pull several rows at once. Let's try calling the data for the 100th through 109th entries:
 
-```{r, include=FALSE}
+```{r}
 gapminder[100:109,]
 ```
 
@@ -326,11 +325,16 @@ isolate data for a particular country of interest.
 
 We need to use our countries listed as a factor level for this to work.
 
-####THIS ISNT WORKING IN THE CHUNK, BUT IS IN THE CONSOLE????
-####is it because youre not evaluating (or including) them? - A 
+Here we will revisit the answer to the fourth challenge above.
 
+```{r}
+country.fac <- as.factor(gapminder$country)
+gapminder <- cbind(gapminder, country.fac)
+```
 
-```{r, include=FALSE}
+Now let's take a look at the list of countries included in the dataset!
+
+```{r}
 levels(gapminder$country.fac)
 ```
 
@@ -340,9 +344,17 @@ now each extract entries for that particular country.
 This first involves using a logical operator to determine whether country entries
 match your country of interest.
 
+Let's break the script below into 2 pieces to make clearer what is happening.
+
+1. The "gapminder$country.fac" section is telling R to consider only data contained in the country.fac column of the gapminder dataset.
+This is the function of the "$" operator.
+
+2. The "==" in "==Country_name" is the logical operator. This is telling R to return whether or not the entry in the specified spot in
+our dataframe (e.g. the country.fac entry) matches the country_name we have asked it for here. 
+
 Let's start by working with the top (head) of the dataset:
 
-```{r, include=FALSE}
+```{r}
 head(gapminder)
 
 head(gapminder$country.fac=="Afghanistan")
@@ -357,12 +369,12 @@ isolate parts of the gapminder dataset for a specific country.
 Here we are need to insert this logical function into the subsetting formula
 we used earlier ([rows, columns]).
 
-```{r, include=FALSE}
+```{r}
 gapminder[gapminder$country.fac=="Panama",]
 ```
 
 Finally, we can register this subsetted data frame as its own entry if desired.
-```{r, include=FALSE}
+```{r}
 gapminder.panama <- gapminder[gapminder$country.fac=="Panama",]
 
 gapminder.panama
