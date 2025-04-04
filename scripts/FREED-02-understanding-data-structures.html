@@ -399,7 +399,7 @@ while using the View command will open a separate tab with the data
 <h3>Data Types</h3>
 <p>We can now ask R about the structure of our dataframe — variables
 (columns) may be numbers, characters, or factors using the structure
-<code>str</code> command.</p>
+<code>str()</code> command.</p>
 <pre class="r"><code>str(cats)</code></pre>
 <pre><code>## &#39;data.frame&#39;:    3 obs. of  3 variables:
 ##  $ coat        : chr  &quot;calico&quot; &quot;black&quot; &quot;tabby&quot;
@@ -413,7 +413,7 @@ group entries of a dataset together. For example, if we were interested
 in asking questions like:</p>
 <p>Does whether cats like catnip affect metrics like their weight?</p>
 <p>Let’s start by isolating the “likes_catnip” column visually using the
-$ function.</p>
+<code>$</code> function.</p>
 <pre class="r"><code>cats$likes_catnip</code></pre>
 <pre><code>## [1] 1 0 1</code></pre>
 <p>Now, we can convert this to a factor, and view its structure</p>
@@ -424,8 +424,8 @@ str(factor_catnip)</code></pre>
 </div>
 <div id="adding-rows-and-columns-to-data-frames" class="section level3">
 <h3>Adding rows and columns to data frames</h3>
-<p>We can now use the cbind (column binding) function to add this to our
-cats dataset</p>
+<p>We can now use the <code>cbind()</code> (column binding) function to
+add this to our cats dataset</p>
 <pre class="r"><code>cbind(cats, factor_catnip)</code></pre>
 <pre><code>##     coat weight likes_catnip factor_catnip
 ## 1 calico    2.1            1             1
@@ -497,34 +497,64 @@ argument names and their default values.</p>
 <p>Okay, so now we are going to be working with a larger data set — the
 Gapminder data set, which contains hundreds of global development
 indicators for countries across the globe.</p>
-<p>First, make sure that the gapminder_data.csv file is saved in your
-data folder.</p>
-<pre class="r"><code>gapminder &lt;- read.csv(&quot;data/gapminder_data.csv&quot;, header = TRUE)</code></pre>
+<p>First, make sure that the <code>gapminder_data.csv</code> file is
+saved in your data folder.</p>
+<p>To load the data, we first need to load the tidyverse package that
+you previously installed. We use the <code>library()</code> function for
+this in R.</p>
+<pre class="r"><code>library(tidyverse)</code></pre>
+<pre><code>## Warning: package &#39;lubridate&#39; was built under R version 4.4.2</code></pre>
+<pre><code>## ── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
+## ✔ dplyr     1.1.4     ✔ readr     2.1.5
+## ✔ forcats   1.0.0     ✔ stringr   1.5.1
+## ✔ ggplot2   3.5.1     ✔ tibble    3.2.1
+## ✔ lubridate 1.9.3     ✔ tidyr     1.3.1
+## ✔ purrr     1.0.2     
+## ── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
+## ✖ dplyr::filter() masks stats::filter()
+## ✖ dplyr::lag()    masks stats::lag()
+## ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
+<p>Now we can load in the data! Rejoice.</p>
+<pre class="r"><code>gapminder &lt;- read_csv(&quot;data/gapminder_data.csv&quot;)</code></pre>
+<pre><code>## Rows: 1704 Columns: 6
+## ── Column specification ────────────────────────────────────────────────────────
+## Delimiter: &quot;,&quot;
+## chr (2): country, continent
+## dbl (4): year, pop, lifeExp, gdpPercap
+## 
+## ℹ Use `spec()` to retrieve the full column specification for this data.
+## ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
 <p>Let’s look at the data!</p>
 <pre class="r"><code>gapminder
 
 View(gapminder)</code></pre>
 <p>As you can see this is a huge dataset! Let’s first find out just how
-many entries it contains, then look only at its first few entires</p>
+many entries it contains, then look only at its first few entries using
+the <code>head()</code> function.</p>
 <pre class="r"><code>nrow(gapminder)</code></pre>
 <pre><code>## [1] 1704</code></pre>
 <pre class="r"><code>head(gapminder)</code></pre>
-<pre><code>##       country year      pop continent lifeExp gdpPercap
-## 1 Afghanistan 1952  8425333      Asia  28.801  779.4453
-## 2 Afghanistan 1957  9240934      Asia  30.332  820.8530
-## 3 Afghanistan 1962 10267083      Asia  31.997  853.1007
-## 4 Afghanistan 1967 11537966      Asia  34.020  836.1971
-## 5 Afghanistan 1972 13079460      Asia  36.088  739.9811
-## 6 Afghanistan 1977 14880372      Asia  38.438  786.1134</code></pre>
-<p>We can also examine its last rows using the tail function.</p>
+<pre><code>## # A tibble: 6 × 6
+##   country      year      pop continent lifeExp gdpPercap
+##   &lt;chr&gt;       &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+## 1 Afghanistan  1952  8425333 Asia         28.8      779.
+## 2 Afghanistan  1957  9240934 Asia         30.3      821.
+## 3 Afghanistan  1962 10267083 Asia         32.0      853.
+## 4 Afghanistan  1967 11537966 Asia         34.0      836.
+## 5 Afghanistan  1972 13079460 Asia         36.1      740.
+## 6 Afghanistan  1977 14880372 Asia         38.4      786.</code></pre>
+<p>We can also examine its last rows using the <code>tail()</code>
+function.</p>
 <pre class="r"><code>tail(gapminder)</code></pre>
-<pre><code>##       country year      pop continent lifeExp gdpPercap
-## 1699 Zimbabwe 1982  7636524    Africa  60.363  788.8550
-## 1700 Zimbabwe 1987  9216418    Africa  62.351  706.1573
-## 1701 Zimbabwe 1992 10704340    Africa  60.377  693.4208
-## 1702 Zimbabwe 1997 11404948    Africa  46.809  792.4500
-## 1703 Zimbabwe 2002 11926563    Africa  39.989  672.0386
-## 1704 Zimbabwe 2007 12311143    Africa  43.487  469.7093</code></pre>
+<pre><code>## # A tibble: 6 × 6
+##   country   year      pop continent lifeExp gdpPercap
+##   &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+## 1 Zimbabwe  1982  7636524 Africa       60.4      789.
+## 2 Zimbabwe  1987  9216418 Africa       62.4      706.
+## 3 Zimbabwe  1992 10704340 Africa       60.4      693.
+## 4 Zimbabwe  1997 11404948 Africa       46.8      792.
+## 5 Zimbabwe  2002 11926563 Africa       40.0      672.
+## 6 Zimbabwe  2007 12311143 Africa       43.5      470.</code></pre>
 </div>
 <div id="subsetting-data-frames-numerically" class="section level3">
 <h3>Subsetting data frames numerically</h3>
@@ -534,44 +564,57 @@ row and column number. Starting with columns only, we can use the
 following syntax to only show the 1st column of the data. Note that the
 space before the comma in the square brackets [,] is empty because we
 are asking R to show us the entries for every row.</p>
-<p>Also note that we are wrapping this command with the head() function
-so that we only see the first 6 entries — we don’t want to print all
-1704 rows again!</p>
+<p>Also note that we are wrapping this command with the
+<code>head()</code> function so that we only see the first 6 entries —
+we don’t want to print all 1704 rows again!</p>
 <pre class="r"><code>head(gapminder[,1])</code></pre>
-<pre><code>## [1] &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot; &quot;Afghanistan&quot;
-## [6] &quot;Afghanistan&quot;</code></pre>
+<pre><code>## # A tibble: 6 × 1
+##   country    
+##   &lt;chr&gt;      
+## 1 Afghanistan
+## 2 Afghanistan
+## 3 Afghanistan
+## 4 Afghanistan
+## 5 Afghanistan
+## 6 Afghanistan</code></pre>
 <p>We can now ask R to show us the entries for the 2nd through 4th
 columns, using a continuous span of numbers.</p>
 <pre class="r"><code>head(gapminder[,2:4])</code></pre>
-<pre><code>##   year      pop continent
-## 1 1952  8425333      Asia
-## 2 1957  9240934      Asia
-## 3 1962 10267083      Asia
-## 4 1967 11537966      Asia
-## 5 1972 13079460      Asia
-## 6 1977 14880372      Asia</code></pre>
-<p>Now we will move on to specifiying which rows of the data frame to
+<pre><code>## # A tibble: 6 × 3
+##    year      pop continent
+##   &lt;dbl&gt;    &lt;dbl&gt; &lt;chr&gt;    
+## 1  1952  8425333 Asia     
+## 2  1957  9240934 Asia     
+## 3  1962 10267083 Asia     
+## 4  1967 11537966 Asia     
+## 5  1972 13079460 Asia     
+## 6  1977 14880372 Asia</code></pre>
+<p>Now we will move on to specifying which rows of the data frame to
 pull up. This number appears before the comma. Leaving the column number
 (ie. the entry after the comma) means that data will be displayed for
 all columns of the row(s) specified.</p>
 <pre class="r"><code>gapminder[1,]</code></pre>
-<pre><code>##       country year     pop continent lifeExp gdpPercap
-## 1 Afghanistan 1952 8425333      Asia  28.801  779.4453</code></pre>
+<pre><code>## # A tibble: 1 × 6
+##   country      year     pop continent lifeExp gdpPercap
+##   &lt;chr&gt;       &lt;dbl&gt;   &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+## 1 Afghanistan  1952 8425333 Asia         28.8      779.</code></pre>
 <p>Here again, we can specify a range of numbers to pull several rows at
 once. Let’s try calling the data for the 100th through 109th
 entries:</p>
 <pre class="r"><code>gapminder[100:109,]</code></pre>
-<pre><code>##        country year       pop continent lifeExp gdpPercap
-## 100 Bangladesh 1967  62821884      Asia  43.453  721.1861
-## 101 Bangladesh 1972  70759295      Asia  45.252  630.2336
-## 102 Bangladesh 1977  80428306      Asia  46.923  659.8772
-## 103 Bangladesh 1982  93074406      Asia  50.009  676.9819
-## 104 Bangladesh 1987 103764241      Asia  52.819  751.9794
-## 105 Bangladesh 1992 113704579      Asia  56.018  837.8102
-## 106 Bangladesh 1997 123315288      Asia  59.412  972.7700
-## 107 Bangladesh 2002 135656790      Asia  62.013 1136.3904
-## 108 Bangladesh 2007 150448339      Asia  64.062 1391.2538
-## 109    Belgium 1952   8730405    Europe  68.000 8343.1051</code></pre>
+<pre><code>## # A tibble: 10 × 6
+##    country     year       pop continent lifeExp gdpPercap
+##    &lt;chr&gt;      &lt;dbl&gt;     &lt;dbl&gt; &lt;chr&gt;       &lt;dbl&gt;     &lt;dbl&gt;
+##  1 Bangladesh  1967  62821884 Asia         43.5      721.
+##  2 Bangladesh  1972  70759295 Asia         45.3      630.
+##  3 Bangladesh  1977  80428306 Asia         46.9      660.
+##  4 Bangladesh  1982  93074406 Asia         50.0      677.
+##  5 Bangladesh  1987 103764241 Asia         52.8      752.
+##  6 Bangladesh  1992 113704579 Asia         56.0      838.
+##  7 Bangladesh  1997 123315288 Asia         59.4      973.
+##  8 Bangladesh  2002 135656790 Asia         62.0     1136.
+##  9 Bangladesh  2007 150448339 Asia         64.1     1391.
+## 10 Belgium     1952   8730405 Europe       68       8343.</code></pre>
 <div id="challenge-1" class="section level4 challenge">
 <h4>Challenge 1</h4>
 <p>One of the most important parts of data analysis in R is ensuring
@@ -601,8 +644,8 @@ in our cats data frame.</p>
 </div>
 <div id="tip-1.3" class="section level4 tip">
 <h4>Tip 1.3</h4>
-<p>Use the head() or tail() command to remind yourself of where these
-columns fall in the dataset.</p>
+<p>Use the <code>head()</code> or <code>tail()</code> command to remind
+yourself of where these columns fall in the dataset.</p>
 <p>Revisit the “Subsetting data frames numerically” chapter for help
 specifying how to enter the required row and column numbers.</p>
 </div>
@@ -735,14 +778,13 @@ country entries match your country of interest.</p>
 <p>Let’s break the script below into 2 pieces to make clearer what is
 happening.</p>
 <ol style="list-style-type: decimal">
-<li><p>The “gapminder<span class="math inline">\(country.fac&quot;
-section is telling R to consider only data contained in the country.fac
-column of the gapminder dataset.
-This is the function of the &quot;\)</span>” operator.</p></li>
-<li><p>The “==” in “==Country_name” is the logical operator. This is
-telling R to return whether or not the entry in the specified spot in
-our dataframe (e.g. the country.fac entry) matches the country_name we
-have asked it for here.</p></li>
+<li><p>The <code>gapminder$country.fac</code> section is telling R to
+consider only data contained in the country.fac column of the gapminder
+dataset. This is the function of the <code>$</code> operator.</p></li>
+<li><p>The <code>==</code> in <code>==Country_name</code> is the logical
+operator. This is telling R to return whether or not the entry in the
+specified spot in our dataframe (e.g. the country.fac entry) matches the
+country_name we have asked it for here.</p></li>
 </ol>
 <p>Let’s start by working with the top (head) of the dataset:</p>
 <pre class="r"><code>head(gapminder)</code></pre>

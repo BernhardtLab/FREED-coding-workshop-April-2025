@@ -59,7 +59,7 @@ View(cats)
 ### Data Types
 
 We can now ask R about the structure of our dataframe — variables (columns) may be numbers, characters, or factors
-using the structure `str` command.
+using the structure `str()` command.
 
 ```{r}
 str(cats)
@@ -74,7 +74,7 @@ dataset together. For example, if we were interested in asking questions like:
 
 Does whether cats like catnip affect metrics like their weight?
 
-Let's start by isolating the "likes_catnip" column visually using the $ function.
+Let's start by isolating the "likes_catnip" column visually using the `$` function.
 
 ```{r}
 cats$likes_catnip
@@ -90,7 +90,7 @@ str(factor_catnip)
 
 ### Adding rows and columns to data frames
 
-We can now use the cbind (column binding) function to add this to our cats dataset
+We can now use the `cbind()` (column binding) function to add this to our cats dataset
 
 ```{r}
 cbind(cats, factor_catnip)
@@ -170,10 +170,19 @@ write.csv(cats, "data/feline-data.csv")
 Okay, so now we are going to be working with a larger data set — the Gapminder data set, which contains
 hundreds of global development indicators for countries across the globe.
 
-First, make sure that the gapminder_data.csv file is saved in your data folder.
+First, make sure that the `gapminder_data.csv` file is saved in your data folder.
+
+To load the data, we first need to load the tidyverse package that you previously installed.
+We use the `library()` function for this in R.
 
 ```{r}
-gapminder <- read.csv("data/gapminder_data.csv", header = TRUE)
+library(tidyverse)
+```
+
+Now we can load in the data! Rejoice.
+
+```{r}
+gapminder <- read_csv("data/gapminder_data.csv")
 ```
 
 Let's look at the data!
@@ -184,7 +193,7 @@ gapminder
 View(gapminder)
 ```
 
-As you can see this is a huge dataset! Let's first find out just how many entries it contains, then look only at its first few entires
+As you can see this is a huge dataset! Let's first find out just how many entries it contains, then look only at its first few entries using the `head()` function.
 
 ```{r}
 nrow(gapminder)
@@ -192,7 +201,7 @@ nrow(gapminder)
 head(gapminder)
 ```
 
-We can also examine its last rows using the tail function.
+We can also examine its last rows using the `tail()` function.
 
 ```{r}
 tail(gapminder)
@@ -204,7 +213,7 @@ When working with large datasets like this, you may often want to visualize smal
 it based on row and column number. Starting with columns only, we can use the following syntax to only show the 1st column of the data.
 Note that the space before the comma in the square brackets [,] is empty because we are asking R to show us the entries for every row.
 
-Also note that we are wrapping this command with the head() function so that we only see the first 6 entries — we don't want to print all 1704 rows again!
+Also note that we are wrapping this command with the `head()` function so that we only see the first 6 entries — we don't want to print all 1704 rows again!
 
 ```{r}
 head(gapminder[,1])
@@ -216,7 +225,7 @@ We can now ask R to show us the entries for the 2nd through 4th columns, using a
 head(gapminder[,2:4])
 ```
 
-Now we will move on to specifiying which rows of the data frame to pull up. This number appears before the comma. Leaving the column number
+Now we will move on to specifying which rows of the data frame to pull up. This number appears before the comma. Leaving the column number
 (ie. the entry after the comma) means that data will be displayed for all columns of the row(s) specified.
 
 ```{r}
@@ -263,7 +272,7 @@ In the chapter "Data types" we used a function to look at data types in our cats
 
 ::::::::::::::::::::::::::::::::::::::: tip
 #### Tip 1.3
-Use the head() or tail() command to remind yourself of where these columns fall
+Use the `head()` or `tail()` command to remind yourself of where these columns fall
 in the dataset.
 
 Revisit the "Subsetting data frames numerically" chapter for help specifying
@@ -346,10 +355,10 @@ match your country of interest.
 
 Let's break the script below into 2 pieces to make clearer what is happening.
 
-1. The "gapminder$country.fac" section is telling R to consider only data contained in the country.fac column of the gapminder dataset.
-This is the function of the "$" operator.
+1. The `gapminder$country.fac` section is telling R to consider only data contained in the country.fac column of the gapminder dataset.
+This is the function of the `$` operator.
 
-2. The "==" in "==Country_name" is the logical operator. This is telling R to return whether or not the entry in the specified spot in
+2. The `==` in `==Country_name` is the logical operator. This is telling R to return whether or not the entry in the specified spot in
 our dataframe (e.g. the country.fac entry) matches the country_name we have asked it for here. 
 
 Let's start by working with the top (head) of the dataset:
