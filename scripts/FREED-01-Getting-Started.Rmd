@@ -570,9 +570,9 @@ Your directory now looks like this
 
 :::::::::::::::::::::::::::::::::::::::  tip
 
-#### Tip: Look at the Files Panel
-You can look at the bottom right panel in R Studio to see the list of files and folders in your directory. You can navigate to different folders here without changing your working directory.
-
+#### Tip: Check out the Files Panel
+The bottom right panel in R Studio has a Files tab where you can see the list of files and folders in your directory. You can navigate to different folders here without changing your working directory.
+You can also use this panel to create or delete folders/subdirectories and files. 
 :::::::::::::::::::::::::::::::::::::::  
 
 ### Directory Navigation 
@@ -636,6 +636,8 @@ We can list the files in the directory one level up fom our project directory us
 ```{r, eval=F}
 list.files("../")
 ```
+
+Notice how the `..` shows up in the  `Files` tab in the panel on the bottom right. If you clicked `..` in this panel, which directory do you think would appear? 
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
