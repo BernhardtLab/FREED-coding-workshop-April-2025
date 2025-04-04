@@ -75,9 +75,7 @@ even find the `dplyr` grammar easier to read.
 
 #### Tip: Tidyverse
 `dplyr` package belongs to a broader family of opinionated R packages
-designed for data science called the "Tidyverse". These
-packages are specifically designed to work harmoniously together.
-Some of these packages will be covered along this course, but you can find more
+designed for data science called the "Tidyverse". You loaded this earlier today, so it should be running, but you can double check by typing `(.packages())`. These packages are specifically designed to work harmoniously together. Some of these packages will be covered along this course, but you can find more
 complete information here: [https://www.tidyverse.org/](https://www.tidyverse.org/).
 
 :::::::::::::::::::::::::::::::::::::::::  
