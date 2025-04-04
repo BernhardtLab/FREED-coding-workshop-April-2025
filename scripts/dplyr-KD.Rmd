@@ -107,6 +107,7 @@ year_country_gdp <- select(gapminder, year, country, gdpPercap)
 ```
 
 ![](../fig/13-dplyr-fig1.png){alt='Diagram illustrating use of select function to select two columns of a data frame'}
+
 If we want to remove one column only from the `gapminder` data, for example,
 removing the `continent` column.
 

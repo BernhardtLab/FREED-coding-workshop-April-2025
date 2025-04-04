@@ -387,6 +387,34 @@ x <- 1:5
 This is incredibly powerful; Jason will discuss this further in an
 upcoming lesson.
 
+
+
+:::::::::::::::::::::::::::::::::::::::  challenge
+Above, we used operators `==, >, <` to compare numbers. These same operators can be used to compare logical statements. 
+Assign a statement to the variable "pie"
+e.g., 
+```{r, eval=F}
+pie<- "the best"
+```
+Use the `==` operator to test if this variable is equal to a logical statement. 
+::::::::::::::::::::::::::::::::::::::: 
+
+<input type="checkbox" id="solution-toggle-19" style="display:none;" />
+<label for="solution-toggle-19" class="toggle-label">Click to show the solution</label>
+<div id="solution-content-19" class="solution">
+<h4>Solution:</h4>
+
+Here is an example of what your statements could have looked like:
+```{r}
+pie<- "the best"
+
+pie == "the worst"
+pie == "mediocre"
+pie == "the best"
+```
+</div>
+
+
 ## Managing your R Project
 
 The scientific process is naturally incremental, and many projects

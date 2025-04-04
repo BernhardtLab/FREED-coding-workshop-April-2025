@@ -98,7 +98,9 @@
 #solution-toggle-15:checked + .toggle-label + #solution-content-15,
 #solution-toggle-16:checked + .toggle-label + #solution-content-16,
 #solution-toggle-17:checked + .toggle-label + #solution-content-17,
-#solution-toggle-18:checked + .toggle-label + #solution-content-18{  
+#solution-toggle-18:checked + .toggle-label + #solution-content-18,
+#solution-toggle-19:checked + .toggle-label + #solution-content-19{  
+{  
   display: block;
   border-left: 5px solid #31A354;
   padding: 10px 15px 10px 20px;
