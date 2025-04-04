@@ -223,7 +223,7 @@ exp(0.5)
 ```
 
 :::::::::::::::::::::::::::::::::::::::::  tip
-#### Tipe Annotate your code
+#### Tip Annotate your code
 
 Your code may be referenced in the future by others or even yourself. To make it easier to understand, it can be useful to annotate/ leave comments explaining what you are doing. 
 This can be done in your R script using #
