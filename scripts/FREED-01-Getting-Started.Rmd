@@ -434,7 +434,7 @@ We're going to create a new project in RStudio:
 
 ::::::::::::::::::::::::::::::::::::::::::: tip
 #### Tip: Work from your local hard drive
-Save your project on the local system, meaning the hard drive of your computer (e.g., "C" Drive). Saving your projects to a cloud-based server (e.g., OneDrive, Google Drive, iCloud) can make it challenging to navigate across folders later on. 
+Save your project on the local system, meaning the hard drive of your computer (e.g., "C" Drive on a PC; "Documents" folder on a Mac). Saving your projects to a cloud-based server (e.g., OneDrive, Google Drive, iCloud) can make it challenging to navigate across folders later on. 
 :::::::::::::::::::::::::::::::::::::::::::
 
 The simplest way to open an RStudio project once it has been created is to click
