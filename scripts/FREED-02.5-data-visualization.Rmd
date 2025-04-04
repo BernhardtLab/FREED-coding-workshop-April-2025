@@ -25,8 +25,18 @@ output:
 
 ::::::::::::::::::::::::::::::::::::::::::::::::::
 
+We will begin by once again loading in the tidyverse package that you previously installed.
+
+The reason for including that here once again is the idea that in coding, an individual
+R script/file should contain all of the commands required for it to be run, rather 
+than depending on commands executed previously in other files. 
+
+```{r}
+library(tidyverse)
+```
+
 ```{r, include=FALSE}
-gapminder <- read.csv("data/gapminder_data.csv", header = TRUE)
+gapminder <- read_csv("data/gapminder_data.csv")
 ```
 
 Plotting our data is one of the best ways to
@@ -480,3 +490,41 @@ ggplot(data = gapminder, mapping = aes(x = continent, y = lifeExp, fill = contin
 
 :::::::::::::::::::::::::::::::::::::::: 
 
+# Bonus content - reordering factor levels.
+
+As you have seen in the plots above, countries are ordered alphabetically. However, there are reasons 
+that we might conceivably want to change this arrangement. What if for example, we wanted the data for
+countries from North America to be arranged at the top of this plot grid?
+
+Here, we will convert country to a factor in the americas dataset and use `fct_relevel()` command to re-order them.
+
+```{r}
+americas$country.fac <- as.factor(americas$country)
+
+levels(americas$country.fac)
+```
+
+The following countries are in South America: Argentina, Bolivia, Brazil, Chile, Colombia, Ecuador, Paraguay, Peru, Uruguay, and Venezuela.
+
+We will use the `fct_relevel()` command from the forcats package (contained in the tidyverse) to do this
+
+```{r}
+americas$country.fac <- fct_relevel(americas$country.fac, "Canada", "Costa Rica", "Cuba", "Dominican Republic", "El Salvador", "Guatemala", "Haiti", 
+                                    "Honduras", "Jamaica", "Mexico", "Nicaragua", "Panama", "Puerto Rico", "Trinidad and Tobago", "United States",
+                                    "Argentina", "Bolivia", "Brazil", "Chile", "Colombia", "Ecuador", "Paraguay", "Peru", "Uruguay", "Venezuela")
+
+levels(americas$country.fac)
+```
+Now we can specify that the `facet_wrap()` function should order things by this new division of countries into North and South America!
+
+```{r}
+ggplot(data = americas, mapping = aes(x = year, y = lifeExp, color=continent)) +
+  geom_line() + facet_wrap( ~ country.fac) +
+  labs(
+    x = "Year",              # x axis title
+    y = "Life expectancy",   # y axis title
+    title = "Figure 1",      # main title of figure
+    color = "Continent"      # title of legend
+  ) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1))
+```
