@@ -390,6 +390,9 @@ upcoming lesson.
 
 
 :::::::::::::::::::::::::::::::::::::::  challenge
+
+#### Challenge: Use `==` and variable assignment
+
 Above, we used operators `==, >, <` to compare numbers. These same operators can be used to compare logical statements. 
 Assign a statement to the variable "pie"
 e.g., 
