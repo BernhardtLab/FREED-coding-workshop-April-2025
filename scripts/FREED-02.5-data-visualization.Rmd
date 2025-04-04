@@ -183,7 +183,9 @@ ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, color=continent)) +
 
 Instead of adding a `geom_point` layer, we've added a `geom_line` layer.
 
-However, the result doesn't look quite as we might have expected: it seems to be jumping around a lot in each continent. Let's try to separate the data by country, plotting one line for each country:
+However, the result doesn't look quite as we might have expected: it seems to be jumping around a lot in each continent. It appears to be drawing one line per continent, but each continent contains many countries! 
+
+Let's try to separate the data by country, plotting one line for each country:
 
 ```{r lifeExp-line-by}
 ggplot(data = gapminder, mapping = aes(x=year, y=lifeExp, group=country, color=continent)) +
@@ -214,6 +216,8 @@ In this example, the *aesthetic* mapping of **color** has been moved from the
 global plot options in `ggplot` to the `geom_line` layer so it no longer applies
 to the points. Now we can clearly see that the points are drawn on top of the
 lines.
+
+Look carefully at the code above; the `color=continent` command is placed within the `geom_line()` command, not the `mapping` command.
 
 :::::::::::::::::::::::::::::::::::::::::  tip
 
