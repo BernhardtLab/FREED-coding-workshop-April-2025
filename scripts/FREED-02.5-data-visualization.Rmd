@@ -517,9 +517,7 @@ We can also arrange Central American countries (Costa Rica, El Salvador, Guatema
 We will use the `fct_relevel()` command from the forcats package (contained in the tidyverse) to do this
 
 ```{r}
-americas$country.fac <- fct_relevel(americas$country.fac, "Canada", "Cuba", "Dominican Republic", "Haiti", "Jamaica", "Mexico",  "Puerto Rico", 
-                                    "Trinidad and Tobago", "United States","Costa Rica", "El Salvador", "Guatemala", "Honduras", "Nicaragua", "Panama",
-                                    "Argentina", "Bolivia", "Brazil", "Chile", "Colombia", "Ecuador", "Paraguay", "Peru", "Uruguay", "Venezuela")
+americas$country.fac <- fct_relevel(americas$country.fac, "Canada", "Cuba", "Dominican Republic", "Haiti", "Jamaica", "Mexico",  "Puerto Rico", "Trinidad and Tobago", "United States","Costa Rica", "El Salvador", "Guatemala", "Honduras", "Nicaragua", "Panama", "Argentina", "Bolivia", "Brazil", "Chile", "Colombia", "Ecuador", "Paraguay", "Peru", "Uruguay", "Venezuela")
 
 levels(americas$country.fac)
 ```
