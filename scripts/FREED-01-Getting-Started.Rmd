@@ -631,7 +631,7 @@ In the example below, `Documents` is the directory one level up from our project
 
 ![](../fig/01-directory3.png){width=25%}
 
-We can list the files in the directory one level up fom our project directory using the `list.files()` command and our relative file path: 
+We can list the files in the directory one level up fom our project directory using the `list.files()` command and our relative file path in quotation marks: 
 
 ```{r, eval=F}
 list.files("../")
@@ -730,9 +730,9 @@ We'll go through an example later.
 :::::::::::::::::::::::::::::::::::::::: 
 
 
-
-#### Bonus Challenges (havent finished yet)
-
+:::::::::::::::::::::::::::::::::::::::: bonus
+#### Bonus Challenges
+:::::::::::::::::::::::::::::::::::::::: 
 
 :::::::::::::::::::::::::::::::::::::::  challenge
 
@@ -783,28 +783,33 @@ of `r age` to the variable age.
 </div>
 
 
-
-:::::::::::::::::::::::::::::::::::::::::  tip
-#### Tip: Keep your working directory and project directory the same
-
-Although you can change the working directory with `setwd()`, or by using RStudio menus, we do not suggest this. Instead, use relative file paths to navigate your working directory. This ensures that your code is reproducible and easy to follow. 
-:::::::::::::::::::::::::::::::::::::::::  
-
-
 :::::::::::::::::::::::::::::::::::::::::  challenge 
-#### Challenge: Find the absolute file path for this R script 
+#### Challenge: Find the absolute file path for your R script 
 
 :::::::::::::::::::::::::::::::::::::::::  
 
-:::::::::::::::::::::::::::::::::::::::::  solution 
-#### Solution
+<input type="checkbox" id="solution-toggle-20" style="display:none;" />
+<label for="solution-toggle-20" class="toggle-label">Click to show the solution</label>
+<div id="solution-content-20" class="solution">
+<h4>Solution:</h4>
 
-We can start by checking the working directory we are in. This should be a list of directories followed by /FREED-coding-workshop-April-2025
+We can start by checking the working directory we are in. This should be a list of directories followed by /FREED-R-Workshop
 
 ```{r, eval=F}
 getwd() #
 ```
 
-:::::::::::::::::::::::::::::::::::::::::  
+We know that we organized all our scripts in the `scripts` folder, so the next subdirectory would be `/scripts`, followed by the name of the file. 
 
-add a pattern =? 
+</div>
+
+
+:::::::::::::::::::::::::::::::::::::::::  challenge 
+#### Challenge: List all word docs in a folder
+You can add `pattern =` in `list.files()` to only list certain files in a folder. For example,to list all the .csv files in data, we would use this code:
+```{r, eval=FALSE}
+list.files("data/", pattern = ".csv")
+```
+
+Using `list.files()` with relative file paths and `pattern =`, list all .doc files in one of the folders of your computer. 
+:::::::::::::::::::::::::::::::::::::::::  
