@@ -849,9 +849,7 @@ El Salvador, Guatemala, Honduras, Nicaragua, and Panama) in the
 middle.</p>
 <p>We will use the <code>fct_relevel()</code> command from the forcats
 package (contained in the tidyverse) to do this</p>
-<pre class="r"><code>americas$country.fac &lt;- fct_relevel(americas$country.fac, &quot;Canada&quot;, &quot;Cuba&quot;, &quot;Dominican Republic&quot;, &quot;Haiti&quot;, &quot;Jamaica&quot;, &quot;Mexico&quot;,  &quot;Puerto Rico&quot;, 
-                                    &quot;Trinidad and Tobago&quot;, &quot;United States&quot;,&quot;Costa Rica&quot;, &quot;El Salvador&quot;, &quot;Guatemala&quot;, &quot;Honduras&quot;, &quot;Nicaragua&quot;, &quot;Panama&quot;,
-                                    &quot;Argentina&quot;, &quot;Bolivia&quot;, &quot;Brazil&quot;, &quot;Chile&quot;, &quot;Colombia&quot;, &quot;Ecuador&quot;, &quot;Paraguay&quot;, &quot;Peru&quot;, &quot;Uruguay&quot;, &quot;Venezuela&quot;)
+<pre class="r"><code>americas$country.fac &lt;- fct_relevel(americas$country.fac, &quot;Canada&quot;, &quot;Cuba&quot;, &quot;Dominican Republic&quot;, &quot;Haiti&quot;, &quot;Jamaica&quot;, &quot;Mexico&quot;,  &quot;Puerto Rico&quot;, &quot;Trinidad and Tobago&quot;, &quot;United States&quot;,&quot;Costa Rica&quot;, &quot;El Salvador&quot;, &quot;Guatemala&quot;, &quot;Honduras&quot;, &quot;Nicaragua&quot;, &quot;Panama&quot;, &quot;Argentina&quot;, &quot;Bolivia&quot;, &quot;Brazil&quot;, &quot;Chile&quot;, &quot;Colombia&quot;, &quot;Ecuador&quot;, &quot;Paraguay&quot;, &quot;Peru&quot;, &quot;Uruguay&quot;, &quot;Venezuela&quot;)
 
 levels(americas$country.fac)</code></pre>
 <pre><code>##  [1] &quot;Canada&quot;              &quot;Cuba&quot;                &quot;Dominican Republic&quot; 
