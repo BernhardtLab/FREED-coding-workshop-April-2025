@@ -23,16 +23,15 @@ theme_set(theme_minimal())
 The `palmerpenguins` R package contains two datasets that we believe are a viable alternative to Anderson's **Iris** data (see `datasets::iris`). In this introductory vignette, we'll highlight some of the properties of these datasets that make them useful for statistics and data science education, as well as software documentation and testing.
 
 
-<img src="../man/figures/palmerpenguins.png" width=30% style="display:block; margin-left: auto; margin-right: auto;">
+<img src="../fig/palmerpenguins.png" width=30% style="display:block; margin-left: auto; margin-right: auto;">
 
-> You can download all the palmerpenguins art directly from `vignette("art")`
 
 ## Meet the penguins
 
 The  `palmerpenguins` data contains size measurements for three penguin species observed on three islands in the Palmer Archipelago, Antarctica. 
 
 <figure>
-  <img src="../man/figures/lter_penguins.png" alt="The Palmer Archipelago penguins. Artwork by @allison_horst." width=60% style="display:block; margin-left: auto; margin-right: auto;">
+  <img src="../fig/lter_penguins.png" alt="The Palmer Archipelago penguins. Artwork by @allison_horst." width=60% style="display:block; margin-left: auto; margin-right: auto;">
   <figcaption>The Palmer Archipelago penguins. Artwork by @allison_horst.</figcaption>
 </figure>
 
@@ -72,17 +71,6 @@ glimpse(penguins)
 
 The `palmerpenguins::penguins` data contains `r sum(complete.cases(penguins))` complete cases, with `r sum(is.na(penguins))` missing values.
 
-```{r eval=FALSE}
-visdat::vis_dat(penguins)
-```
-
-```{r include=FALSE, eval=FALSE}
-ggsave("vignettes/figs/penguin-visdat.png", width = 8)
-```
-
-```{r eval=TRUE, echo=FALSE}
-knitr::include_graphics("figs/penguin-visdat.png")
-```
 
 
 ## Highlights
@@ -177,26 +165,6 @@ ggplot(penguins, aes(x = flipper_length_mm,
 ```
 
 
-### Exploring correlations
-
-Also see `vignette("pca")` for an example principal component analysis.
-
-```{r penguin-pairs, eval=FALSE}
-penguins %>%
-  select(species, body_mass_g, ends_with("_mm")) %>% 
-  GGally::ggpairs(aes(color = species)) +
-  scale_colour_manual(values = c("darkorange","purple","cyan4")) +
-  scale_fill_manual(values = c("darkorange","purple","cyan4"))
-```
-
-```{r include=FALSE, eval=FALSE}
-ggsave("vignettes/figs/penguin-ggpairs.png", width = 8)
-```
-
-```{r eval=TRUE, echo=FALSE}
-knitr::include_graphics("figs/penguin-ggpairs.png")
-```
-
 
 ### Exploring distributions
 
@@ -216,23 +184,6 @@ ggplot(data = penguins, aes(x = flipper_length_mm)) +
 ```
 
 
-### More
-
-See more examples in:
-
-+ `vignette("examples")`, 
-+ `vignette("pca")`, and 
-+ `vignette("user_contributions")`
-
-Or contribute your own!
-
-## Package citation 
-
-Please cite the palmerpenguins R package using: 
-
-```{r}
-citation("palmerpenguins")
-```
 
 ## References
 
@@ -250,7 +201,7 @@ Individual data can be accessed directly via the [Environmental Data Initiative]
 
 -   Palmer Station Antarctica LTER and K. Gorman, 2020. Structural size measurements and isotopic signatures of foraging among adult male and female Chinstrap penguin (*Pygoscelis antarcticus*) nesting along the Palmer Archipelago near Palmer Station, 2007-2009 ver 6. Environmental Data Initiative. <https://doi.org/10.6073/pasta/c14dfcfada8ea13a17536e73eb6fbe9e> (Accessed 2020-06-08).
 
-Have fun with the Palmer Archipelago penguins!
+
 
 
 
