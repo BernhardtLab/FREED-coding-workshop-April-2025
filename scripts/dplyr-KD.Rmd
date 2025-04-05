@@ -24,7 +24,7 @@ editor_options:
 ::: questions
 #### Question
 
--   How can I manipulate data frames without repeating myself?
+-   How can I manipulate data frames to generate and view the information I want in a nice and organized way?
 :::
 
 First, let's get our environment ready by loading the data and necessary
@@ -59,7 +59,7 @@ levels(as.factor(gapminder$continent))
 Quick memory jog -- why do we have to include the `as.factor()` command
 inside our levels command?
 
-Next, let's take the mean for each continent.
+Next, let's take the mean for each continent. Using the subsetting technique that Jason taught us in the data structure module, we would do something like this:
 
 ```{r}
 mean(gapminder$gdpPercap[gapminder$continent == "Africa"])
@@ -81,7 +81,7 @@ Luckily, the [`dplyr`](https://cran.r-project.org/package=dplyr) package
 provides a number of very useful functions for manipulating data frames
 in a way that will reduce the above repetition, reduce the probability
 of making errors, and probably even save you some typing. As an added
-bonus, you might even find the `dplyr` grammar easier to read.
+bonus, you might even find the `dplyr` syntax easier to read.
 
 ::: tip
 #### Tip: Tidyverse
@@ -103,18 +103,6 @@ as using pipes (`%>%`) to combine them.
 3.  `group_by()`
 4.  `summarize()`
 5.  `mutate()`
-
-If you have have not installed this package earlier, please do so:
-
-```{r, eval=FALSE}
-install.packages('dplyr')
-```
-
-Now let's load the package:
-
-```{r, message=FALSE}
-library("dplyr")
-```
 
 ## Using select()
 
@@ -141,10 +129,10 @@ year, country and gdpPercap, and if we look at the
 one fewer variable than `gapminder,` since we removed the `continent`
 column.
 
-Above we used 'normal' grammar, where the first argument provides the
+Above we used 'normal' syntax, where the first argument provides the
 data frame we are working on and subsequent arguments give the columns
 to operatre on. But the strengths of `dplyr` lie in combining several
-functions using "pipes". Since the pipes grammar is unlike anything
+functions using "pipes". Since the pipes syntax is unlike anything
 we've seen in R before, let's repeat what we've done above using pipes.
 
 ```{r}
@@ -165,19 +153,12 @@ mac and `ctrl + shift + m` on a PC.
 ::: tip
 #### Tip: Renaming data frame columns in dplyr
 
-In Chapter 4 we covered how you can rename columns with base R by
-assigning a value to the output of the `names()` function. Just like
-select, this is a bit cumbersome, but thankfully dplyr has a `rename()`
-function.
-
-Within a pipeline, the syntax is `rename(new_name = old_name)`. For
+We often create new columns in R and then later want to change the name of those column. Luckily, dplyr has a handy  `rename()` function. Within a pipeline, the syntax is `rename(new_name = old_name)`. For
 example, we may want to rename the gdpPercap column name from our
-`select()` statement above.
+`select()` statement above. We can also add functions like `View()` into our pipe for quick, automated inspection of new data frames.
 
 ```{r}
-tidy_gdp <- year_country_gdp %>% rename(gdp_pc = gdpPercap)
-
-head(tidy_gdp)
+year_country_gdp %>% rename(gdp_pc = gdpPercap) %>% View()
 ```
 
 Quick challenge: Why doesn't the rename command require a double equals
@@ -311,7 +292,7 @@ function, we split our original data frame into multiple pieces, then we
 can run functions (e.g. `mean()` or `sd()`) within `summarize()`.
 
 Let's calculate the mean gdp for each continent, like we did at the top
-of this lesson, but using `group_by()` and `summarize()`
+of this lesson, but using `group_by()` and `summarize()`.
 
 ```{r}
 gdp_bycontinents <- gapminder %>%
@@ -339,7 +320,8 @@ it gets even better.
 
 1.  Calculate the average life expectancy per country.
 2.  Use `filter()` to determine which country has the longest average
-    life expectancy and which has the shortest average life expectancy?
+    life expectancy and which has the shortest average life expectancy? 
+    **Hint:** R has `min()` and `max()` functions for smallest and largest values of a variable.
 :::
 
 <input type="checkbox" id="solution-toggle-16" style="display:none;" />
@@ -455,7 +437,7 @@ information using `mutate()`.
 
 ```{r}
 gdp_pop_bycontinents_byyear <- gapminder %>%
-    mutate(gdp_billion = gdpPercap*pop/10^9) %>%
+    mutate(gdp_billion = gdpPercap*pop/10^9) %>% #convert gdp per person to gdp per 1 billion (10^9) people
     group_by(continent,year) %>%
     summarize(mean_gdpPercap = mean(gdpPercap),
               sd_gdpPercap = sd(gdpPercap),
