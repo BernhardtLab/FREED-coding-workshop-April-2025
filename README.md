@@ -16,6 +16,22 @@ Instructors: [Dr. Amanda Cicchino](https://amandascicchino.weebly.com/), [Dr. Ka
 
 Attribution and acknowledgments: Much the course material is adapted from [Software Carpentry](https://swcarpentry.github.io/r-novice-gapminder/).
 
+
+## Roadmap & Schedule
+
+| Module                               | Topic                           | Lecture notes                                                                                                                                                                         | Leader          |
+|-----------------------------|------------------------|--------------------|-----------------|
+| Saturday morning (10-12pm)           | Introductions & Getting started | [Set up notes](https://htmlpreview.github.io/?https://github.com/BernhardtLab/FREED-coding-workshop-April-2025/blob/main/scripts/FREED-01-Getting-Started.html)                       | Amanda Cicchino |
+| Saturday midday (12pm-1pm)           | Lunch!                          |                                                                                                                                                                                       |                 |
+| Saturday afternoon (1pm-1:45pm)      | Data structures                 | [Data structure notes](https://htmlpreview.github.io/?https://github.com/BernhardtLab/FREED-coding-workshop-April-2025/blob/main/scripts/FREED-02-understanding-data-structures.html) | Jason Laurich   |
+| Saturday afternoon (1:45pm-2:30pm)   | Data visualization              | [Creating plots notes](https://htmlpreview.github.io/?https://github.com/BernhardtLab/FREED-coding-workshop-April-2025/blob/main/scripts/FREED-02.5-data-visualization.html)          | Jason Laurich   |
+| Saturday afternoon (2:30pm - 3:00pm) | Afternoon break!                |                                                                                                                                                                                       |                 |
+| Saturday afternoon (3:00 pm-4:30pm)  | Data wrangling                  | [Data wrangling notes](https://htmlpreview.github.io/?https://github.com/BernhardtLab/FREED-coding-workshop-April-2025/blob/main/scripts/dplyr-KD.html)                               | Kaleigh Davis   |
+| Saturday afternoon (4:30pm-5:00pm)   | Recap                           |                                                                                                                                                                                       |                 |
+
+
+
+
 ## Why use R and R studio?
 
 Welcome to the Set-Up portion of our FREED R Workshop. This module is modified from the [Software Carpentry workshop](https://swcarpentry.github.io/r-novice-gapminder/), which you can learn more about online.
@@ -32,14 +48,3 @@ However, to make using R easier, we will use the program RStudio, which we also 
 
 We will begin with raw data, perform exploratory analyses, and learn how to plot results graphically. This example starts with a dataset from [gapminder.org](https://www.gapminder.org) containing population information for many countries through time. Can you read the data into R? Can you plot the population for Senegal? Can you calculate the average income for countries on the continent of Asia? By the end of these lessons you will be able to do things like plot the populations for all of these countries in under a minute!
 
-## Roadmap & Schedule
-
-| Module                               | Topic                           | Lecture notes                                                                                                                                                                         | Leader          |
-|-----------------------------|------------------------|--------------------|-----------------|
-| Saturday morning (10-12pm)           | Introductions & Getting started | [Set up notes](https://htmlpreview.github.io/?https://github.com/BernhardtLab/FREED-coding-workshop-April-2025/blob/main/scripts/FREED-01-Getting-Started.html)                       | Amanda Cicchino |
-| Saturday midday (12pm-1pm)           | Lunch!                          |                                                                                                                                                                                       |                 |
-| Saturday afternoon (1pm-1:45pm)      | Data structures                 | [Data structure notes](https://htmlpreview.github.io/?https://github.com/BernhardtLab/FREED-coding-workshop-April-2025/blob/main/scripts/FREED-02-understanding-data-structures.html) | Jason Laurich   |
-| Saturday afternoon (1:45pm-2:30pm)   | Data visualization              | [Creating plots notes](https://htmlpreview.github.io/?https://github.com/BernhardtLab/FREED-coding-workshop-April-2025/blob/main/scripts/FREED-02.5-data-visualization.html)          | Jason Laurich   |
-| Saturday afternoon (2:30pm - 3:00pm) | Afternoon break!                |                                                                                                                                                                                       |                 |
-| Saturday afternoon (3:00 pm-4:30pm)  | Data wrangling                  | [Data wrangling notes](https://htmlpreview.github.io/?https://github.com/BernhardtLab/FREED-coding-workshop-April-2025/blob/main/scripts/dplyr-KD.html)                               | Kaleigh Davis   |
-| Saturday afternoon (4:30pm-5:00pm)   | Recap                           |                                                                                                                                                                                       |                 |
