@@ -494,7 +494,9 @@ ggplot(data = gapminder, mapping = aes(x = continent, y = lifeExp, fill = contin
 
 :::::::::::::::::::::::::::::::::::::::: 
 
-# Bonus content - reordering factor levels.
+::: bonus
+# Bonus content: Reordering factor levels
+:::
 
 As you have seen in the plots above, countries are ordered alphabetically. However, there are reasons 
 that we might conceivably want to change this arrangement. What if for example, we wanted the data for
