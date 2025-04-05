@@ -1,6 +1,20 @@
-# FREED-coding-workshop-April-2025
+# FREED coding workshop April 2025
 
-Repository for the FREED workshop at the University of Guelph (April 5-6) led by the Bernhardt lab
+# Welcome!
+
+Welcome to the FREED workshop at the University of Guelph (April 5-6) led by the Bernhardt lab! This workshop is designed to empower students to wrangle, visualize and analyse ecological data using modern data analysis tools. Student will learn how to:
+
+-   explore, clean, visualize and analyse data
+
+-   make their methods reproducible, reusable, and shareable
+
+-   use R's modern landscape.
+
+## Teaching team
+
+Instructors: [Dr. Amanda Cicchino](https://amandascicchino.weebly.com/), [Dr. Kaleigh Davis](https://kaleighedavis.github.io/), [Dr. Jason Laurich](https://www.jasonlaurich.ca/), [Dr. Joey Bernhardt](https://www.bernhardtlab.org/), Department of Integrative Biology, University of Guelph
+
+Attribution and acknowledgments: Much the course material is adapted from [Software Carpentry](https://swcarpentry.github.io/r-novice-gapminder/).
 
 ## Why use R and R studio?
 
@@ -18,9 +32,14 @@ However, to make using R easier, we will use the program RStudio, which we also 
 
 We will begin with raw data, perform exploratory analyses, and learn how to plot results graphically. This example starts with a dataset from [gapminder.org](https://www.gapminder.org) containing population information for many countries through time. Can you read the data into R? Can you plot the population for Senegal? Can you calculate the average income for countries on the continent of Asia? By the end of these lessons you will be able to do things like plot the populations for all of these countries in under a minute!
 
-| Module | Topic              | Lecture notes                                                                                                                                                                         | Leader          |
-|-----------------|-----------------|---------------------|-----------------|
-| 1      | Getting started    | [Set up notes](https://htmlpreview.github.io/?https://github.com/BernhardtLab/FREED-coding-workshop-April-2025/blob/main/scripts/FREED-01-Getting-Started.html)                       | Amanda Cicchino |
-| 2      | Data structures    | [Data structure notes](https://htmlpreview.github.io/?https://github.com/BernhardtLab/FREED-coding-workshop-April-2025/blob/main/scripts/FREED-02-understanding-data-structures.html) | Jason Laurich   |
-| 3      | Data visualization | [Creating plots notes](https://htmlpreview.github.io/?https://github.com/BernhardtLab/FREED-coding-workshop-April-2025/blob/main/scripts/FREED-02.5-data-visualization.html)          | Jason Laurich   |
-| 4      | Data wrangling     | [Data wrangling notes](https://htmlpreview.github.io/?https://github.com/BernhardtLab/FREED-coding-workshop-April-2025/blob/main/scripts/dplyr-KD.html)                               | Kaleigh Davis   |
+## Roadmap & Schedule
+
+| Module                               | Topic                           | Lecture notes                                                                                                                                                                         | Leader          |
+|-----------------------------|------------------------|--------------------|-----------------|
+| Saturday morning (10-12pm)           | Introductions & Getting started | [Set up notes](https://htmlpreview.github.io/?https://github.com/BernhardtLab/FREED-coding-workshop-April-2025/blob/main/scripts/FREED-01-Getting-Started.html)                       | Amanda Cicchino |
+| Saturday midday (12pm-1pm)           | Lunch!                          |                                                                                                                                                                                       |                 |
+| Saturday afternoon (1pm-1:45pm)      | Data structures                 | [Data structure notes](https://htmlpreview.github.io/?https://github.com/BernhardtLab/FREED-coding-workshop-April-2025/blob/main/scripts/FREED-02-understanding-data-structures.html) | Jason Laurich   |
+| Saturday afternoon (1:45pm-2:30pm)   | Data visualization              | [Creating plots notes](https://htmlpreview.github.io/?https://github.com/BernhardtLab/FREED-coding-workshop-April-2025/blob/main/scripts/FREED-02.5-data-visualization.html)          | Jason Laurich   |
+| Saturday afternoon (2:30pm - 3:00pm) | Afternoon break!                |                                                                                                                                                                                       |                 |
+| Saturday afternoon (3:00 pm-4:30pm)  | Data wrangling                  | [Data wrangling notes](https://htmlpreview.github.io/?https://github.com/BernhardtLab/FREED-coding-workshop-April-2025/blob/main/scripts/dplyr-KD.html)                               | Kaleigh Davis   |
+| Saturday afternoon (4:30pm-5:00pm)   | Recap                           |                                                                                                                                                                                       |                 |
