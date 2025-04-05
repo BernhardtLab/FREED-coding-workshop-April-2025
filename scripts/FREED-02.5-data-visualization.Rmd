@@ -128,9 +128,9 @@ on the x-axis.
 :::::::::::::::::::::::::::::::::::::::  
 
 <input type="checkbox" id="solution-toggle-8" style="display:none;" />
-<label for="solution-toggle-8" class="toggle-label">Click to show the solution</label>
-<div id="solution-content-8" class="solution">
-<h4>Solution to challenge 1:</h4> 
+ <label for="solution-toggle-8" class="toggle-label">Click to show the solution</label>
+ <div id="solution-content-8" class="solution">
+ <h4>Solution to Challenge 1:</h4>
 
 Here is one possible solution:
 
@@ -153,11 +153,10 @@ column. What trends do you see in the data? Are they what you expected?
 :::::::::::::::::::::::::::::::::::::::  
 
 <input type="checkbox" id="solution-toggle-9" style="display:none;" />
-<label for="solution-toggle-9" class="toggle-label">Click to show the solution</label>
-<div id="solution-content-9" class="solution">
-<h4>Solution to challenge 2:</h4> 
-
-
+ <label for="solution-toggle-9" class="toggle-label">Click to show the solution</label>
+ <div id="solution-content-9" class="solution">
+ <h4>Solution to Challenge 2:</h4>
+ 
 The solution presented below adds `color=continent` to the call of the `aes`
 function. The general trend seems to indicate an increased life expectancy
 over the years. On continents with stronger economies we find a longer life
