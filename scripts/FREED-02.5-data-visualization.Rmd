@@ -396,10 +396,12 @@ elements. The x-axis is too cluttered, and the y axis should read
 
 We can do this by adding a couple of different layers. The **theme** layer
 controls the axis text, and overall text size. Labels for the axes, plot
-title and any legend can be set using the `labs` function. Legend titles
-are set using the same names we used in the `aes` specification. Thus below
-the color legend title is set using `color = "Continent"`, while the title
-of a fill legend would be set using `fill = "MyTitle"`.
+title and any legend can be set using the `labs` function. 
+
+Legend titles are set using the same names we used in the `aes` specification. 
+Thus below the color legend title is set using `color = "Continent"`. We could
+change this legend title from "Continent" to something else by adding the 
+`fill = "Insert Title Here"` command to the `labs()` chunk.
 
 ```{r theme}
 ggplot(data = americas, mapping = aes(x = year, y = lifeExp, color=continent)) +
@@ -510,12 +512,13 @@ levels(americas$country.fac)
 ```
 
 The following countries are in South America: Argentina, Bolivia, Brazil, Chile, Colombia, Ecuador, Paraguay, Peru, Uruguay, and Venezuela.
+We can also arrange Central American countries (Costa Rica, El Salvador, Guatemala, Honduras, Nicaragua, and Panama) in the middle.
 
 We will use the `fct_relevel()` command from the forcats package (contained in the tidyverse) to do this
 
 ```{r}
-americas$country.fac <- fct_relevel(americas$country.fac, "Canada", "Costa Rica", "Cuba", "Dominican Republic", "El Salvador", "Guatemala", "Haiti", 
-                                    "Honduras", "Jamaica", "Mexico", "Nicaragua", "Panama", "Puerto Rico", "Trinidad and Tobago", "United States",
+americas$country.fac <- fct_relevel(americas$country.fac, "Canada", "Cuba", "Dominican Republic", "Haiti", "Jamaica", "Mexico",  "Puerto Rico", 
+                                    "Trinidad and Tobago", "United States","Costa Rica", "El Salvador", "Guatemala", "Honduras", "Nicaragua", "Panama",
                                     "Argentina", "Bolivia", "Brazil", "Chile", "Colombia", "Ecuador", "Paraguay", "Peru", "Uruguay", "Venezuela")
 
 levels(americas$country.fac)
