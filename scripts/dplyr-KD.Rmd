@@ -321,7 +321,7 @@ it gets even better.
 1.  Calculate the average life expectancy per country.
 2.  Use `filter()` to determine which country has the longest average
     life expectancy and which has the shortest average life expectancy? 
-    **Hint:** R has `min()` and `max()` functions for smallest and largest values of a variable.
+    **Hint:** R has `min()` and `max()` functions for identifying the smallest and largest values of a variable.
 :::
 
 <input type="checkbox" id="solution-toggle-16" style="display:none;" />
@@ -560,7 +560,7 @@ solution</label>
 ```{r}
 gapminder %>% 
   mutate(startsWith = substr(country, 1, 1)) %>% 
-  filter(startsWith == "K" | startsWith == "D") %>% #No Q or X in dataset
+  filter(startsWith == "K") %>% #No Q or X in dataset
   mutate(year_before_me = ifelse(year >= 1994, "NO", "YES")) %>% 
   ggplot(aes(x = year, y = pop, colour = year_before_me, shape = continent)) + 
   geom_point() + 
