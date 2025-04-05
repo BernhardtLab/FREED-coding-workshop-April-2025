@@ -24,7 +24,7 @@ editor_options:
 ::: questions
 #### Question
 
--   How can I manipulate data frames to generate and view the information I want in a nice and organized way?
+-   How can I manipulate data frames to generate the information I want, and display it in a nice and organized way?
 :::
 
 First, let's get our environment ready by loading the data and necessary
