@@ -208,12 +208,9 @@ this worked properly?
 :::
 
 <input type="checkbox" id="solution-toggle-14" style="display:none;" />
-<label for="solution-toggle-14" class="toggle-label">Click to show the
-solution</label>
-
-::: {#solution-content-14 .solution}
-<h4>Solution to Challenge 1:</h4>
-
+ <label for="solution-toggle-14" class="toggle-label">Click to show the solution</label>
+ <div id="solution-content-14" class="solution">
+ <h4>Solution to Challenge 1:</h4>
 ```{r}
 year_country_lifeExp_Africa <- gapminder %>%
                            filter(continent == "Africa") %>%
@@ -223,7 +220,7 @@ year_country_lifeExp_Africa <- gapminder %>%
 levels(as.factor(year_country_lifeExp_Africa$country)) #this looks correct
 
 ```
-:::
+</div>
 
 ::: challenge
 #### Challenge 2
@@ -233,12 +230,12 @@ Now, repeat the exercise above, but include values for `lifeExp`,
 continents. How many rows does this data frame have and why?
 :::
 
-<input type="checkbox" id="solution-toggle-15" style="display:none;" />
-<label for="solution-toggle-15" class="toggle-label">Click to show the
-solution</label>
 
-::: {#solution-content-15 .solution}
-<h4>Solution to challenge 2:</h4>
+
+<input type="checkbox" id="solution-toggle-15" style="display:none;" />
+ <label for="solution-toggle-15" class="toggle-label">Click to show the solution</label>
+ <div id="solution-content-15" class="solution">
+ <h4>Solution to challenge 2:</h4>
 
 ```{r}
 year_country_lifeExp_Afr_Oce <- gapminder %>% 
@@ -248,7 +245,7 @@ year_country_lifeExp_Afr_Oce <- gapminder %>%
 #check
 levels(as.factor(year_country_lifeExp_Afr_Oce$country)) #this looks correct
 ```
-:::
+</div>
 
 As with last time, first we pass the gapminder data frame to the
 `filter()` function, then we pass the filtered version of the gapminder
@@ -324,12 +321,12 @@ it gets even better.
     **Hint:** R has `min()` and `max()` functions for smallest and largest values of a variable.
 :::
 
-<input type="checkbox" id="solution-toggle-16" style="display:none;" />
-<label for="solution-toggle-16" class="toggle-label">Click to show the
-solution</label>
 
-::: {#solution-content-16 .solution}
-<h4>Solution to challenge 3:</h4>
+<input type="checkbox" id="solution-toggle-16" style="display:none;" />
+ <label for="solution-toggle-16" class="toggle-label">Click to show the solution</label>
+ <div id="solution-content-16" class="solution">
+ <h4>Solution to challenge 3:</h4>
+ 
 
 ```{r}
 lifeExp_bycountry <- gapminder %>%
@@ -363,7 +360,7 @@ lifeExp_bycountry %>%
    arrange(desc(country)) %>%
    head()
 ```
-:::
+</div>
 
 The function `group_by()` allows us to group by multiple variables.
 Let's group by `year` and `continent`.
@@ -551,12 +548,10 @@ your graph!
 :::
 
 <input type="checkbox" id="solution-toggle-17" style="display:none;" />
-<label for="solution-toggle-17" class="toggle-label">Click to show the
-solution</label>
-
-::: {#solution-content-17 .solution}
-<h4>Solution to challenge 4:</h4>
-
+ <label for="solution-toggle-17" class="toggle-label">Click to show the solution</label>
+ <div id="solution-content-17" class="solution">
+ <h4>Solution to challenge 4:</h4>
+ 
 ```{r}
 gapminder %>% 
   mutate(startsWith = substr(country, 1, 1)) %>% 
@@ -567,7 +562,7 @@ gapminder %>%
   facet_grid(~country)
   
 ```
-:::
+</div>
 
 ::: challenge
 #### Advanced Challenge
@@ -578,12 +573,11 @@ reverse order. **Hint:** Use the `dplyr` functions `arrange()` and
 `sample_n()`, they have similar syntax to other dplyr functions.
 :::
 
-<input type="checkbox" id="solution-toggle-18" style="display:none;" />
-<label for="solution-toggle-18" class="toggle-label">Click to show the
-solution</label>
 
-::: {#solution-content-18 .solution}
-<h4>Solution to Advanced Challenge:</h4>
+<input type="checkbox" id="solution-toggle-18" style="display:none;" />
+ <label for="solution-toggle-18" class="toggle-label">Click to show the solution</label>
+ <div id="solution-content-18" class="solution">
+ <h4>Solution to Advanced Challenge:</h4>
 
 ```{r}
 lifeExp_2countries_bycontinents <- gapminder %>%
@@ -593,7 +587,7 @@ lifeExp_2countries_bycontinents <- gapminder %>%
    summarize(mean_lifeExp = mean(lifeExp)) %>%
    arrange(desc(mean_lifeExp))
 ```
-:::
+</div>
 
 ## Other great resources
 
