@@ -40,11 +40,11 @@ The  `palmerpenguins` data contains size measurements for three penguin species 
 \
 
 
-These data were collected from 2007 - 2009 by Dr. Kristen Gorman with the [Palmer Station Long Term Ecological Research Program](https://pal.lternet.edu/), part of the [US Long Term Ecological Research Network](https://lternet.edu/). The data were imported directly from the [Environmental Data Initiative](https://environmentaldatainitiative.org/) (EDI) Data Portal, and are available for use by CC0 license ("No Rights Reserved") in accordance with the [Palmer Station Data Policy](https://pal.lternet.edu/data/policies). 
+These data were collected from 2007 - 2009 by [Dr. Kristen Gorman](https://www.uaf.edu/cfos/people/faculty/detail/kristen-gorman.php) with the [Palmer Station Long Term Ecological Research Program](https://pal.lternet.edu/), part of the [US Long Term Ecological Research Network](https://lternet.edu/). The data were imported directly from the [Environmental Data Initiative](https://environmentaldatainitiative.org/) (EDI) Data Portal, and are available for use by CC0 license ("No Rights Reserved") in accordance with the [Palmer Station Data Policy](https://pal.lternet.edu/data/policies). 
 
 ## Installation
 
-Refresher... how do we install and load a package? You can install the released version of palmerpenguins from [CRAN](https://CRAN.R-project.org) with:
+Refresher... how do we install and load a package?
 
 ```{r eval=FALSE, echo = TRUE}
 install.packages("palmerpenguins")
