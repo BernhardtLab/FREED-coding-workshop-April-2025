@@ -160,7 +160,7 @@ The `penguins` data has three factor variables:
 
 ```{r}
 penguins %>%
-  dplyr::select(where(is.factor)) %>% 
+  dplyr::select(where(is.factor)) %>% ## note that the where() function is a tidyselect function
   glimpse()
 ```
 
@@ -173,7 +173,7 @@ penguins %>%
 
 ```{r}
 ggplot(penguins, aes(x = island, fill = species)) +
-  geom_bar(alpha = 0.8) +
+  geom_bar(alpha = 0.8, stat = "count") +
   scale_fill_manual(values = c("darkorange","purple","cyan4"), 
                     guide = FALSE) +
   theme_minimal() +
@@ -199,10 +199,9 @@ ggplot(penguins, aes(x = sex, fill = species)) +
 
 ```{r}
 # Penguins are fun to summarize!
+
 penguins %>% 
-  count(species)
-penguins %>% 
-  group_by(species) %>% 
+  group_by(species, year) %>% 
   summarize(across(where(is.numeric), mean, na.rm = TRUE))
 ```
 
@@ -236,7 +235,7 @@ ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
 ```
 
 
-You can add color and/or shape aesthetics in `ggplot2` to layer in factor levels like we did above. With three factor variables to work with, you can add another factor layer with facets, like the plot below.
+Challenge: plot the relationship between body mass and flipper length, colored by sex, faceted by species.
 
 ```{r}
 ggplot(penguins, aes(x = flipper_length_mm,
