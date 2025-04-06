@@ -1,5 +1,8 @@
 ---
 title: "Data wrangling with Palmer penguins"
+output:
+  html_document:
+    code_folding: hide
 ---
 
 ```{r, include = FALSE}
@@ -43,15 +46,8 @@ These data were collected from 2007 - 2009 by Dr. Kristen Gorman with the [Palme
 
 You can install the released version of palmerpenguins from [CRAN](https://CRAN.R-project.org) with:
 
-``` r
+```{r eval=FALSE, echo = TRUE}
 install.packages("palmerpenguins")
-```
-
-Or install the development version from [GitHub](https://github.com/) with:
-
-```{r eval=FALSE}
-# install.packages("remotes")
-remotes::install_github("allisonhorst/palmerpenguins")
 ```
 
 ## The **palmerpenguins** package
@@ -64,6 +60,9 @@ This package contains two datasets:
 
 The curated `palmerpenguins::penguins` dataset contains `r ncol(penguins)` variables (n = `r nrow(penguins)` penguins). You can read more about the variables by typing `?penguins`.
 
+
+
+Let's take a glimpse at the penguins 🐧🐧🐧!  
 ```{r}
 glimpse(penguins)
 ```
@@ -71,7 +70,8 @@ glimpse(penguins)
 The `palmerpenguins::penguins` data contains `r sum(complete.cases(penguins))` complete cases, with `r sum(is.na(penguins))` missing values.
 
 
-Challenge 🐐! Let's find the smallest penguin observed in each species.
+### 🐐  Challenge 1 🐐
+Let's find the smallest penguin observed in each species (hint: you can use the `min()` function)
 ```{r}
 penguins %>% 
   group_by(species) %>% 
@@ -79,17 +79,13 @@ penguins %>%
 ```
 
 
-### Bill dimensions
+### 🐐  Challenge 2 🐐
+Practice mutating! Let's create a new column that has bill size (area, in square milimeters).
 
-The culmen is the upper ridge of a bird's bill. In the simplified `penguins` data, culmen length and depth are renamed as variables `bill_length_mm` and `bill_depth_mm` to be more intuitive.  
-
-For this penguin data, the culmen (bill) length and depth are measured as shown below (thanks Kristen Gorman for clarifying!):
+The culmen is the upper ridge of a bird's bill. In the simplified `penguins` data, culmen length and depth are renamed as variables `bill_length_mm` and `bill_depth_mm` to be more intuitive. For this penguin data, the culmen (bill) length and depth are measured as shown below (thanks Kristen Gorman for clarifying!):
 
 <img src="../fig/culmen_depth.png" width=50% style="display:block; margin-left: auto; margin-right: auto;">
 
-
-
-Practice mutating -- let's create a new column that has bill size (area, in square milimeters)
 
 ```{r}
 
@@ -99,22 +95,28 @@ penguins %>%
 
 ```
 
+
+### 🐐  Challenge 3 🐐
 Let's select all columns that contain measurements in mm.
+
+One possible solution is....
 
 ```{r}
 penguins %>% 
   select(ends_with("mm"))
 ```
 
-Let's select all columns that contain measurements in mm.
+Another possible solution is...
 
 ```{r}
 penguins %>% 
   select(contains("mm"))
 ```
 
+### 🐐  Challenge 4 🐐
+Let's find the median body mass for each species.
 
-Let's find the median body mass for each species (using `mutate()`).
+One possible solution... (using `mutate()`).
 ```{r}
 penguins %>% 
   remove_missing() %>% 
@@ -123,7 +125,7 @@ penguins %>%
 ```
 
 
-Let's find the median body mass for each species (using `summarize()`).
+Another possible solution...(using `summarize()`).
 ```{r}
 penguins %>% 
   remove_missing() %>% 
@@ -131,6 +133,7 @@ penguins %>%
   summarize(body_mass_median = median(body_mass_g))
 ```
 
+### 🐐  Challenge 5 🐐
 Let's find the median of everything! This time also grouping by year
 ```{r}
 penguins %>% 
@@ -139,8 +142,8 @@ penguins %>%
   summarize(across(where(is.numeric), median))
 ```
 
-
-Let's create a new column that classifies bill size into two categories -- big or small.
+### 🐐  Challenge 6 🐐
+Let's create a new column that classifies bill size into two categories -- big or small (given a threshold of 800 square millimeters).
 
 ```{r}
 threshold <- 800 ### first define a threshold to distinguish big from small
