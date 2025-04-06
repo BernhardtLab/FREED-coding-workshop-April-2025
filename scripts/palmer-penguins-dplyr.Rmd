@@ -71,7 +71,7 @@ glimpse(penguins)
 The `palmerpenguins::penguins` data contains `r sum(complete.cases(penguins))` complete cases, with `r sum(is.na(penguins))` missing values.
 
 
-Challenge! Let's find the smallest penguin observed in each species.
+Challenge 🐐! Let's find the smallest penguin observed in each species.
 ```{r}
 penguins %>% 
   group_by(species) %>% 
