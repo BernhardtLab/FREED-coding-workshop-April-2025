@@ -1,5 +1,5 @@
 ---
-title: "Introduction to palmerpenguins"
+title: "Data wrangling with Palmer penguins"
 ---
 
 ```{r, include = FALSE}
@@ -20,7 +20,6 @@ library(ggplot2)
 theme_set(theme_minimal())
 ```
 
-The `palmerpenguins` R package contains two datasets that we believe are a viable alternative to Anderson's **Iris** data (see `datasets::iris`). In this introductory vignette, we'll highlight some of the properties of these datasets that make them useful for statistics and data science education, as well as software documentation and testing.
 
 
 <img src="../fig/palmerpenguins.png" width=30% style="display:block; margin-left: auto; margin-right: auto;">
@@ -36,7 +35,7 @@ The  `palmerpenguins` data contains size measurements for three penguin species 
 </figure>
 
 \
-**Aside:** That's right, developers -- [Gentoo Linux is named after penguins](https://wiki.gentoo.org/wiki/FAQ)!
+
 
 These data were collected from 2007 - 2009 by Dr. Kristen Gorman with the [Palmer Station Long Term Ecological Research Program](https://pal.lternet.edu/), part of the [US Long Term Ecological Research Network](https://lternet.edu/). The data were imported directly from the [Environmental Data Initiative](https://environmentaldatainitiative.org/) (EDI) Data Portal, and are available for use by CC0 license ("No Rights Reserved") in accordance with the [Palmer Station Data Policy](https://pal.lternet.edu/data/policies). 
 
@@ -59,7 +58,7 @@ remotes::install_github("allisonhorst/palmerpenguins")
 
 This package contains two datasets:
 
-1. Here, we'll focus on a curated subset of the raw data in the package named `penguins`, which can serve as an out-of-the-box alternative to `datasets::iris`.
+1. Here, we'll focus on a curated subset of the raw data in the package named `penguins`.
 
 1. The raw data, accessed from the [Environmental Data Initiative](https://edirepository.org) (see full data citations below), is also available as `palmerpenguins::penguins_raw`.
 
@@ -74,12 +73,6 @@ The `palmerpenguins::penguins` data contains `r sum(complete.cases(penguins))` c
 
 
 ## Highlights
-
-We don't want to ruin all the fun exploration, visualization, and potential analyses, so below are just a few examples to get you quickly waddling along with *penguins*. You can check out more in `vignette("examples")`.
-
-```{r ref.label="setup", eval=FALSE}
-
-```
 
 ### Exploring factors
 
@@ -127,7 +120,6 @@ ggplot(penguins, aes(x = sex, fill = species)) +
 
 ### Exploring scatterplots
 
-The `penguins` data also has four continuous variables, making six unique scatterplots possible! 
 
 ```{r}
 penguins %>%
