@@ -117,6 +117,17 @@ ggplot(penguins, aes(x = sex, fill = species)) +
   coord_flip()
 ```
 
+```{r}
+# Penguins are fun to summarize!
+penguins %>% 
+  count(species)
+penguins %>% 
+  group_by(species) %>% 
+  summarize(across(where(is.numeric), mean, na.rm = TRUE))
+```
+
+
+
 
 ### Exploring scatterplots
 
@@ -155,6 +166,15 @@ ggplot(penguins, aes(x = flipper_length_mm,
                      na.translate = FALSE) +
   facet_wrap(~species)
 ```
+
+
+### Bill dimensions
+
+The culmen is the upper ridge of a bird's bill. In the simplified `penguins` data, culmen length and depth are renamed as variables `bill_length_mm` and `bill_depth_mm` to be more intuitive.  
+
+For this penguin data, the culmen (bill) length and depth are measured as shown below (thanks Kristen Gorman for clarifying!):
+
+<img src="../fig/culmen_depth.png" width=30% style="display:block; margin-left: auto; margin-right: auto;">
 
 
 
