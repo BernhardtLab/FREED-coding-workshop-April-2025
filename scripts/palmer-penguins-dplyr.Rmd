@@ -44,10 +44,11 @@ These data were collected from 2007 - 2009 by Dr. Kristen Gorman with the [Palme
 
 ## Installation
 
-You can install the released version of palmerpenguins from [CRAN](https://CRAN.R-project.org) with:
+Refresher... how do we install and load a package? You can install the released version of palmerpenguins from [CRAN](https://CRAN.R-project.org) with:
 
 ```{r eval=FALSE, echo = TRUE}
 install.packages("palmerpenguins")
+library(palmerpenguins)
 ```
 
 ## The **palmerpenguins** package
@@ -62,7 +63,7 @@ The curated `palmerpenguins::penguins` dataset contains `r ncol(penguins)` varia
 
 
 
-Let's take a glimpse at the penguins 🐧🐧🐧!  
+#### Warm up, let's take a look at the penguins 🐧🐧🐧 
 ```{r}
 glimpse(penguins)
 ```
@@ -134,7 +135,7 @@ penguins %>%
 ```
 
 ### 🐐  Challenge 5 🐐
-Let's find the median of everything! This time also grouping by year
+Let's find the median of everything! This time also grouping by year.
 ```{r}
 penguins %>% 
   remove_missing() %>% 
@@ -157,22 +158,28 @@ penguins %>%
 
 
 
-### Exploring factors
+### 🐐  Challenge 7 🐐
 
-The `penguins` data has three factor variables:
-
-```{r}
+Let's use the `tidyselect` function `where()` to `select` all the columns that are factor.
+```{r, echo = TRUE}
 penguins %>%
   dplyr::select(where(is.factor)) %>% ## note that the where() function is a tidyselect function
   glimpse()
 ```
 
 
+### 🐐  Challenge 8 🐐
+Use the `count()` function to count the number of penguins of each species on each island.
+
 ```{r}
 # Count penguins for each species / island
 penguins %>%
   count(species, island, .drop = FALSE)
 ```
+
+
+### 🐐  Challenge 9 🐐
+Use `ggplot()` to make a graph that shows the number of each species of penguin on each island (hint: use `geom_bar()`, and `fill = species`).
 
 ```{r}
 ggplot(penguins, aes(x = island, fill = species)) +
@@ -184,12 +191,18 @@ ggplot(penguins, aes(x = island, fill = species)) +
   coord_flip()
 ```
 
+
+### 🐐  Challenge 10 🐐
+Use the `count()` function to count the number of penguins of each sex and species.
 ```{r}
 # Count penguins for each species / sex
 penguins %>%
   count(species, sex, .drop = FALSE)
 ```
 
+
+### 🐐  Challenge 10 🐐
+Use `ggplot()` to make a graph that shows the number of penguins of each sex for each species.
 ```{r}
 ggplot(penguins, aes(x = sex, fill = species)) +
   geom_bar(alpha = 0.8) +
@@ -200,6 +213,9 @@ ggplot(penguins, aes(x = sex, fill = species)) +
   coord_flip()
 ```
 
+
+### 🐐  Challenge 11 🐐
+Use `across()` and `where()` to calculate the mean of all the variables that are numeric.
 ```{r}
 # Penguins are fun to summarize!
 
@@ -211,34 +227,30 @@ penguins %>%
 
 
 
-### Exploring scatterplots
-
-
+### 🐐  Challenge 12 🐐
+Use a `tidyselect()` helper function to `select` the mass and length columns.
 ```{r}
 penguins %>%
   dplyr::select(body_mass_g, ends_with("_mm")) %>% 
   glimpse()
 ```
 
-
+### 🐐  Challenge 13 🐐
+Use `ggplot()` to make a scatterplot of body mass as a function of flipper length. Display the species information using the colour and shape of the points.
 ```{r}
 # Scatterplot example 1: penguin flipper length versus body mass
 ggplot(data = penguins, aes(x = flipper_length_mm, y = body_mass_g)) +
-  geom_point(aes(color = species, 
+  geom_point(aes(colour = species, 
                  shape = species),
              size = 2) +
   scale_color_manual(values = c("darkorange","darkorchid","cyan4")) 
 
-# Scatterplot example 2: penguin bill length versus bill depth
-ggplot(data = penguins, aes(x = bill_length_mm, y = bill_depth_mm)) +
-  geom_point(aes(color = species, 
-                 shape = species),
-             size = 2)  +
-  scale_color_manual(values = c("darkorange","darkorchid","cyan4"))
 ```
 
 
-Challenge: plot the relationship between body mass and flipper length, colored by sex, faceted by species.
+
+### 🐐  Challenge 14 🐐
+Use `ggplot()` to plot the relationship between body mass and flipper length, coloured by sex, faceted by species.
 
 ```{r}
 ggplot(penguins, aes(x = flipper_length_mm,
@@ -251,7 +263,9 @@ ggplot(penguins, aes(x = flipper_length_mm,
 
 
 
-### Exploring distributions
+### 🐐  Challenge 15 🐐
+Use `ggplot()` to explore the distribution of bill length by species (hint you can use `geom_jitter()` or `geom_histogram()`.
+
 
 ```{r}
 # Jitter plot example: bill length by species
