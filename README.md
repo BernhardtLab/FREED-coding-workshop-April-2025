@@ -21,7 +21,7 @@ Link to the [etherpad with workshop notes](https://etherpad.wikimedia.org/p/FREE
 ## Roadmap & Schedule
 
 | Module                   | Topic                           | Lecture notes                                                                                                                                                                         | Leader          |
-|-------------------|------------------|------------------|------------------|
+|--------------------------|---------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
 | Saturday 10am -12pm      | Introductions & Getting started | [Set up notes](https://htmlpreview.github.io/?https://github.com/BernhardtLab/FREED-coding-workshop-April-2025/blob/main/scripts/FREED-01-Getting-Started.html)                       | Amanda Cicchino |
 | Saturday 12pm-1pm        | Lunch!                          |                                                                                                                                                                                       |                 |
 | Saturday 1pm-1:45pm      | Data structures                 | [Data structure notes](https://htmlpreview.github.io/?https://github.com/BernhardtLab/FREED-coding-workshop-April-2025/blob/main/scripts/FREED-02-understanding-data-structures.html) | Jason Laurich   |
