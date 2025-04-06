@@ -30,7 +30,7 @@ theme_set(theme_minimal())
 
 ## Meet the penguins
 
-The  `palmerpenguins` data contains size measurements for three penguin species observed on three islands in the Palmer Archipelago, Antarctica. 
+The  `penguins` data in the `palmerpenguins` R package contains size measurements for three penguin species observed on three islands in the Palmer Archipelago, Antarctica. 
 
 <figure>
   <img src="../fig/lter_penguins.png" alt="The Palmer Archipelago penguins. Artwork by @allison_horst." width=60% style="display:block; margin-left: auto; margin-right: auto;">
