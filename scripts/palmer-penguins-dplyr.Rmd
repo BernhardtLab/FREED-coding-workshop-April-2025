@@ -78,6 +78,17 @@ penguins %>%
   filter(body_mass_g == min(body_mass_g, na.rm = TRUE))
 ```
 
+
+### Bill dimensions
+
+The culmen is the upper ridge of a bird's bill. In the simplified `penguins` data, culmen length and depth are renamed as variables `bill_length_mm` and `bill_depth_mm` to be more intuitive.  
+
+For this penguin data, the culmen (bill) length and depth are measured as shown below (thanks Kristen Gorman for clarifying!):
+
+<img src="../fig/culmen_depth.png" width=50% style="display:block; margin-left: auto; margin-right: auto;">
+
+
+
 Practice mutating -- let's create a new column that has bill size (area, in square milimeters)
 
 ```{r}
@@ -235,15 +246,6 @@ ggplot(penguins, aes(x = flipper_length_mm,
                      na.translate = FALSE) +
   facet_wrap(~species)
 ```
-
-
-### Bill dimensions
-
-The culmen is the upper ridge of a bird's bill. In the simplified `penguins` data, culmen length and depth are renamed as variables `bill_length_mm` and `bill_depth_mm` to be more intuitive.  
-
-For this penguin data, the culmen (bill) length and depth are measured as shown below (thanks Kristen Gorman for clarifying!):
-
-<img src="../fig/culmen_depth.png" width=50% style="display:block; margin-left: auto; margin-right: auto;">
 
 
 
