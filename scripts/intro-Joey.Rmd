@@ -71,8 +71,77 @@ glimpse(penguins)
 The `palmerpenguins::penguins` data contains `r sum(complete.cases(penguins))` complete cases, with `r sum(is.na(penguins))` missing values.
 
 
+Challenge! Let's find the smallest penguin observed in each species.
+```{r}
+penguins %>% 
+  group_by(species) %>% 
+  filter(body_mass_g == min(body_mass_g, na.rm = TRUE))
+```
 
-## Highlights
+Practice mutating -- let's create a new column that has bill size (area, in square milimeters)
+
+```{r}
+
+penguins %>% 
+  mutate(bill_size_mm2 = bill_depth_mm * bill_length_mm) %>% 
+  head()
+
+```
+
+Let's select all columns that contain measurements in mm.
+
+```{r}
+penguins %>% 
+  select(ends_with("mm"))
+```
+
+Let's select all columns that contain measurements in mm.
+
+```{r}
+penguins %>% 
+  select(contains("mm"))
+```
+
+
+Let's find the median body mass for each species (using `mutate()`).
+```{r}
+penguins %>% 
+  remove_missing() %>% 
+  group_by(species) %>% 
+  mutate(body_mass_median = median(body_mass_g))
+```
+
+
+Let's find the median body mass for each species (using `summarize()`).
+```{r}
+penguins %>% 
+  remove_missing() %>% 
+  group_by(species) %>% 
+  summarize(body_mass_median = median(body_mass_g))
+```
+
+Let's find the median of everything! This time also grouping by year
+```{r}
+penguins %>% 
+  remove_missing() %>% 
+  group_by(species, year) %>% 
+  summarize(across(where(is.numeric), median))
+```
+
+
+Let's create a new column that classifies bill size into two categories -- big or small.
+
+```{r}
+threshold <- 800 ### first define a threshold to distinguish big from small
+penguins %>% 
+  mutate(bill_size_mm2 = bill_depth_mm * bill_length_mm,
+         bill_size_binary = ifelse(bill_size_mm2 > threshold, "big", "small")) %>% 
+  select(bill_size_binary, bill_size_mm2, everything()) %>% 
+  head()
+
+```
+
+
 
 ### Exploring factors
 
@@ -174,7 +243,7 @@ The culmen is the upper ridge of a bird's bill. In the simplified `penguins` dat
 
 For this penguin data, the culmen (bill) length and depth are measured as shown below (thanks Kristen Gorman for clarifying!):
 
-<img src="../fig/culmen_depth.png" width=30% style="display:block; margin-left: auto; margin-right: auto;">
+<img src="../fig/culmen_depth.png" width=50% style="display:block; margin-left: auto; margin-right: auto;">
 
 
 
