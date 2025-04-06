@@ -27,7 +27,7 @@ Attribution and acknowledgments: Much the course material is adapted from [Softw
 | Saturday 2:30pm - 3:00pm | Afternoon break!                |                                                                                                                                                                                       |                 |
 | Saturday 3:00 pm-4:30pm  | Data wrangling                  | [Data wrangling notes](https://htmlpreview.github.io/?https://github.com/BernhardtLab/FREED-coding-workshop-April-2025/blob/main/scripts/dplyr-KD.html)                               | Kaleigh Davis   |
 | Saturday 4:30pm-5:00pm   | Recap                           |                                                                                                                                                                                       |                 |
-| Sunday 10am-1pm          | Data wrangling 2                | [Palmer penguins notes](https://htmlpreview.github.io/?https://github.com/BernhardtLab/FREED-coding-workshop-April-2025/blob/main/scripts/intro-Joey.html)                            | Joey Bernhardt  |
+| Sunday 10am-1pm          | Data wrangling 2                | [Palmer penguins notes](https://htmlpreview.github.io/?https://github.com/BernhardtLab/FREED-coding-workshop-April-2025/blob/main/scripts/palmer-penguins-dplyr.html)                 | Joey Bernhardt  |
 | Sunday 1pm-2pm           | Lunch!                          |                                                                                                                                                                                       |                 |
 
 ## Why use R and R studio?
